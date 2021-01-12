@@ -1,22 +1,26 @@
-import { Link, useMutation } from "blitz";
-import Layout from "app/layouts/Layout";
-import logout from "app/auth/mutations/logout";
-import { useCurrentUser } from "app/hooks/useCurrentUser";
-import { Suspense } from "react";
+import { Link, useMutation } from "blitz"
+import Layout from "app/layouts/Layout"
+import logout from "app/auth/mutations/logout"
+import { useCurrentUser } from "app/hooks/useCurrentUser"
+import { Suspense } from "react"
 /*
  * This file is just for a pleasant getting started page for your new app.
  * You can delete everything in here and start from scratch if you like.
  */
 
 const UserInfo = () => {
-  const currentUser = useCurrentUser();
-  const [logoutMutation] = useMutation(logout);
+  const currentUser = useCurrentUser()
+  const [logoutMutation] = useMutation(logout)
 
   if (currentUser) {
-    return <>
-        <button className="button small" onClick={async () => {
-        await logoutMutation();
-      }}>
+    return (
+      <>
+        <button
+          className="button small"
+          onClick={async () => {
+            await logoutMutation()
+          }}
+        >
           Logout
         </button>
         <div>
@@ -24,9 +28,11 @@ const UserInfo = () => {
           <br />
           User role: <code>{currentUser.role}</code>
         </div>
-      </>;
+      </>
+    )
   } else {
-    return <>
+    return (
+      <>
         <Link href="/signup">
           <a className="button small">
             <strong>Sign Up</strong>
@@ -37,23 +43,31 @@ const UserInfo = () => {
             <strong>Login</strong>
           </a>
         </Link>
-      </>;
+      </>
+    )
   }
-};
+}
 
 const Home = () => {
-  return <div className="container">
-      <main>
-        <div className="logo">
-          <img src="/logo.png" alt="blitz.js" />
+  return (
+    <div className="container">
+      <header className="header">
+        <div className="brand">
+          <img src="/logo.png" alt="Pumpt LLC" />
         </div>
+        <div></div>
+      </header>
+      <main>
         <p>
           <strong>Congrats!</strong> Your app is ready, including user sign-up and log-in.
         </p>
-        <div className="buttons" style={{
-        marginTop: "1rem",
-        marginBottom: "1rem"
-      }}>
+        <div
+          className="buttons"
+          style={{
+            marginTop: "1rem",
+            marginBottom: "1rem",
+          }}
+        >
           <Suspense fallback="Loading...">
             <UserInfo />
           </Suspense>
@@ -87,23 +101,45 @@ const Home = () => {
             </Link>
           </p>
         </div>
-        <div className="buttons" style={{
-        marginTop: "5rem"
-      }}>
-          <a className="button" href="https://blitzjs.com/docs/getting-started?utm_source=blitz-new&utm_medium=app-template&utm_campaign=blitz-new" target="_blank" rel="noopener noreferrer">
+        <div
+          className="buttons"
+          style={{
+            marginTop: "5rem",
+          }}
+        >
+          <a
+            className="button"
+            href="https://blitzjs.com/docs/getting-started?utm_source=blitz-new&utm_medium=app-template&utm_campaign=blitz-new"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Documentation
           </a>
-          <a className="button-outline" href="https://github.com/blitz-js/blitz" target="_blank" rel="noopener noreferrer">
+          <a
+            className="button-outline"
+            href="https://github.com/blitz-js/blitz"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Github Repo
           </a>
-          <a className="button-outline" href="https://slack.blitzjs.com" target="_blank" rel="noopener noreferrer">
+          <a
+            className="button-outline"
+            href="https://slack.blitzjs.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Slack Community
           </a>
         </div>
       </main>
 
       <footer>
-        <a href="https://blitzjs.com?utm_source=blitz-new&utm_medium=app-template&utm_campaign=blitz-new" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://blitzjs.com?utm_source=blitz-new&utm_medium=app-template&utm_campaign=blitz-new"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Powered by Blitz.js
         </a>
       </footer>
@@ -113,6 +149,7 @@ const Home = () => {
 
         html,
         body {
+          background: #38444b;
           padding: 0;
           margin: 0;
           font-family: "Libre Franklin", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -131,7 +168,13 @@ const Home = () => {
           justify-content: center;
           align-items: center;
         }
-
+        .header {
+          padding: 10px 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+        }
         main {
           padding: 5rem 0;
           flex: 1;
@@ -178,6 +221,9 @@ const Home = () => {
           width: 300px;
         }
 
+        .brand {
+          display: flex;
+        }
         .buttons {
           display: grid;
           grid-auto-flow: column;
@@ -240,9 +286,10 @@ const Home = () => {
           }
         }
       `}</style>
-    </div>;
-};
+    </div>
+  )
+}
 
-Home.getLayout = page => <Layout title="Home">{page}</Layout>;
+Home.getLayout = (page) => <Layout title="Home">{page}</Layout>
 
-export default Home;
+export default Home
