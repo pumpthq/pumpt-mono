@@ -3,6 +3,7 @@ import Layout from "app/layouts/Layout"
 import logout from "app/auth/mutations/logout"
 import { useCurrentUser } from "app/hooks/useCurrentUser"
 import { Suspense } from "react"
+// import PublicNavigation from '../components/PublicNavigation.js'
 /*
  * This file is just for a pleasant getting started page for your new app.
  * You can delete everything in here and start from scratch if you like.
@@ -50,98 +51,74 @@ const UserInfo = () => {
 
 const Home = () => {
   return (
-    <div className="container">
-      <header className="header">
-        <div className="brand">
-          <img src="/logo.png" alt="Pumpt LLC" />
-        </div>
-        <div></div>
-      </header>
+    <div>
+      {/* <PublicNavigation /> */}
       <main>
-        <p>
-          <strong>Congrats!</strong> Your app is ready, including user sign-up and log-in.
-        </p>
-        <div
-          className="buttons"
-          style={{
-            marginTop: "1rem",
-            marginBottom: "1rem",
-          }}
-        >
-          <Suspense fallback="Loading...">
-            <UserInfo />
-          </Suspense>
-        </div>
-        <p>
-          <strong>
-            To add a new model to your app, <br />
-            run the following in your terminal:
-          </strong>
-        </p>
-        <pre>
-          <code>blitz generate all project name:string</code>
-        </pre>
-        <pre>
-          <code>blitz db migrate</code>
-        </pre>
-        <div>
-          <p>
-            Then <strong>restart the server</strong>
-          </p>
-          <pre>
-            <code>Ctrl + c</code>
-          </pre>
-          <pre>
-            <code>blitz start</code>
-          </pre>
-          <p>
-            and go to{" "}
-            <Link href="/projects">
-              <a>/projects</a>
-            </Link>
-          </p>
-        </div>
-        <div
-          className="buttons"
-          style={{
-            marginTop: "5rem",
-          }}
-        >
-          <a
-            className="button"
-            href="https://blitzjs.com/docs/getting-started?utm_source=blitz-new&utm_medium=app-template&utm_campaign=blitz-new"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-          <a
-            className="button-outline"
-            href="https://github.com/blitz-js/blitz"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Github Repo
-          </a>
-          <a
-            className="button-outline"
-            href="https://slack.blitzjs.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Slack Community
-          </a>
+        <div className="container">
+          <section className="hero">
+            <div className="hero-left">
+              <h1>Job Matching Done Smarter.</h1>
+              <p>Pumpt uses proprietary AI to match Candidates & Employers. There’s no longer any need to search for jobs or candidates…we do it for you.</p>
+              <div className="hero-buttons">
+                <Link href="/candidates">
+                  <a className="hero-button">I am a Candidate</a>
+                </Link>
+                <Link href="/employers">
+                  <a className="hero-button">I am an Employer</a>
+                </Link>
+              </div>
+            </div>
+            <div className="hero-right">
+              <img className="hero-image" src="/Analytics.png" />
+            </div>
+          </section>
+          <section className="industries full-page">
+            <div className="section-left">
+              <div className="industry-cards">
+                <div className="card-column left">
+                  <div className="card">
+                    <img src="/assets/clipboard_icon_white.png" />
+                    <p className="card-heading">Sales & Sales Management</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                  </div>
+                  <div className="card">
+                    <img src="/assets/smartguy_icon_white.png" />
+                    <p className="card-heading">Sales Planning & Account Management</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                  </div>
+                  <div className="card">
+                    <img src="/assets/megaphone_icon_white.png" />
+                    <p className="card-heading">Marketing & Creative Services</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                  </div>
+                </div>
+                <div className="card-column right">
+                  <div className="card">
+                    <img src="/assets/purse_icon_white.png" />
+                    <p className="card-heading">Business Development</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  </div>
+                  <div className="card">
+                    <img src="/assets/target_icon_white.png" />
+                    <p className="card-heading">Sales & Ad Operations</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="section-right">
+              <div className="industry-info">
+                <h2 style={{ fontSize: '34px' }}>We Provide Jobs and Talent in the Following Areas</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              </div>
+            </div>
+          </section>
+          <section className="full-page"></section>
         </div>
       </main>
 
       <footer>
-        <a
-          href="https://blitzjs.com?utm_source=blitz-new&utm_medium=app-template&utm_campaign=blitz-new"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by Blitz.js
-        </a>
+
       </footer>
 
       <style jsx global>{`
@@ -149,9 +126,10 @@ const Home = () => {
 
         html,
         body {
-          background: #38444b;
+          background: rgb(28,28,28);
           padding: 0;
           margin: 0;
+          color: #E8EFF3;
           font-family: "Libre Franklin", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
             Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
         }
@@ -162,127 +140,175 @@ const Home = () => {
           box-sizing: border-box;
         }
         .container {
-          min-height: 100vh;
+          margin: 0 10%;
           display: flex;
           flex-direction: column;
+        }
+        .sign-up{
+          height: 40px;
+          width: 120px;
+          background-color: #8C50FF;
+          display: flex;
           justify-content: center;
           align-items: center;
+          border-radius: 10px;
         }
+
         .header {
-          padding: 10px 20px;
+          padding: 15px 30px;
           display: flex;
-          justify-content: space-between;
+          justify-content: space-around;
           align-items: center;
           width: 100%;
+        }
+        .links-container {
+          display: flex;
+          align-items: center;
+
+        }
+        .login-buttons {
+          display: flex;
+          align-items: center;
+          justify-content: space-between
+        }
+        .nav-link {
+          margin: 0 15px;
+          text-decoration: none;
+          color:#E8EFF3;
         }
         main {
-          padding: 5rem 0;
-          flex: 1;
+
+          display: flex;
+        }
+        .hero {
+          height: 95vh;
+          width: 100%;
+          display: flex;
+          justify-content:space-around;
+          margin-bottom: 180px
+        }
+        .hero-left {
+          margin: 0;
+          padding: 30px;
+          width: 50%;
+          height: 100%;
           display: flex;
           flex-direction: column;
           justify-content: center;
-          align-items: center;
         }
-
-        main p {
-          font-size: 1.2rem;
+        .hero-left h1 {
+          font-size: 65px;
+          margin-bottom: 10px;
         }
-
-        p {
-          text-align: center;
+        .hero-left p {
+          font-size: 24px;
+          width: 80%;
         }
-
-        footer {
-          width: 100%;
-          height: 60px;
-          border-top: 1px solid #eaeaea;
+        .hero-buttons {
+          display: flex;
+        }
+        .hero-button {
+          text-align: center; 
           display: flex;
           justify-content: center;
           align-items: center;
-          background-color: #45009d;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer a {
-          color: #f4f4f4;
+          margin-right: 15px;
+          border: none;
+          border-radius: 8px;
+          height: 50px;
+          width: 150px;
+          background-color: #8C50FF;
+          color: #E8EFF3;
+          font-size: 16px;
+          font-weight: 600;
           text-decoration: none;
         }
-
-        .logo {
-          margin-bottom: 2rem;
-        }
-
-        .logo img {
-          width: 300px;
-        }
-
-        .brand {
+        .hero-right {
+          margin: 0;
+          width: 50%;
+          height: 100%;
           display: flex;
-        }
-        .buttons {
-          display: grid;
-          grid-auto-flow: column;
-          grid-gap: 0.5rem;
-        }
-        .button {
-          font-size: 1rem;
-          background-color: #6700eb;
-          padding: 1rem 2rem;
-          color: #f4f4f4;
-          text-align: center;
-        }
-
-        .button.small {
-          padding: 0.5rem 1rem;
-        }
-
-        .button:hover {
-          background-color: #45009d;
-        }
-
-        .button-outline {
-          border: 2px solid #6700eb;
-          padding: 1rem 2rem;
-          color: #6700eb;
-          text-align: center;
-        }
-
-        .button-outline:hover {
-          border-color: #45009d;
-          color: #45009d;
-        }
-
-        pre {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          text-align: center;
-        }
-        code {
-          font-size: 0.9rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-            Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
-        .grid {
-          display: flex;
-          align-items: center;
           justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
+          align-items: center;
+        }
+        .hero-image {
+          width: 80%;
+          max-width: 770px;
+          min-width: 400px;
         }
 
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
+        .industries {
+          display: flex;
+        }
+        .section-left {
+          width: 55%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .section-right {
+          width: 45%;
+          height: 100%;
+
+        }
+        .full-page {
+          width: 100%;
+          height: 100vh;
+          margin-bottom: 180px;
+        }
+        .industry-cards {
+          display: flex;
+          width: 100%;
+          align-items: center;
+        }
+        .section-header {
+          width: 100%;
+          height: 50%;
+        }
+
+        .card-column {
+          width: 50%;
+        }
+        .card-column.left {
+          padding-left: 20px;
+          padding-right: 10px;
+        }
+        .card-column.right {
+          padding-right: 20px;
+          padding-left: 10px;
+
+        }
+        .card {
+          width: 100%;
+          height: 350px;
+          margin: 20px 0;
+          padding: 30px;
+          border-radius: 15px;
+          background-color: #262626;
+          box-shadow: inset 0 0 0 2px #2b333d
+        }
+        .card-heading {
+          font-size: 20px;
+          font-weight: bold;
+        }
+        .industry-info {
+          position: sticky;
+          top: 20px;
+          bottom: 10px;
+        }
+
+        
+        @media(max-width: 1210px){
+          .hero-right {
+            display: none
+          }
+          .hero-left{
+            width: 100%
+          }
+
+          .hero-left p {
+            width: 100%
           }
         }
       `}</style>
