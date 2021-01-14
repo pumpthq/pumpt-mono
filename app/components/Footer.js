@@ -6,9 +6,15 @@ const Footer = () => {
           <div className="footer-brand">
             <img className="footer-logo" src="/logo.png" />
             <div className="social">
-              <div className="social-icon"></div>
-              <div className="social-icon"></div>
-              <div className="social-icon"></div>
+              <div className="social-icon">
+                <img className="social-logo" src="/assets/fb.png" />
+              </div>
+              <div className="social-icon">
+                <img className="social-logo" src="/assets/ig.png" />
+              </div>
+              <div className="social-icon">
+                <img className="social-logo" src="/assets/linkedin.png" />
+              </div>
             </div>
           </div>
           <div className="footer-links-1">
@@ -35,6 +41,14 @@ const Footer = () => {
         height: 50vh;
         width: 100%;
         background-color: #141414
+      }
+      .social {
+        display: flex;
+      }
+      .social-logo {
+        margin-right: 14px;
+        height: 60px;
+        width: 60px
       }
       .footer-logo {
         width: 250px

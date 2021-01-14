@@ -1,5 +1,5 @@
 import { Link, useMutation } from "blitz"
-import Layout from "app/layouts/Layout"
+import PublicLayout from "app/layouts/PublicLayout"
 import logout from "app/auth/mutations/logout"
 import { useCurrentUser } from "app/hooks/useCurrentUser"
 import { Suspense } from "react"
@@ -53,7 +53,7 @@ const UserInfo = () => {
 const Home = () => {
   return (
     <div>
-      <PublicNavigation />
+      {/* <PublicNavigation /> */}
       <main>
         <div className="container">
           <section className="hero">
@@ -120,7 +120,7 @@ const Home = () => {
         </div>
       </main>
 
-      <Footer />
+      {/* <Footer /> */}
 
       <style jsx global>{`
         @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;700&display=swap");
@@ -314,7 +314,6 @@ const Home = () => {
           background-color: #262626;
           box-shadow: inset 0 0 0 2px #2b333d
         }
-
         
         @media(max-width: 1210px){
           .hero {
@@ -367,6 +366,6 @@ const Home = () => {
   )
 }
 
-Home.getLayout = (page) => <Layout title="Pumpt | Home">{page}</Layout>
+Home.getLayout = (page) => <PublicLayout title="Pumpt | Home">{page}</PublicLayout>
 
 export default Home

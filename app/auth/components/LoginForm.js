@@ -4,12 +4,13 @@ import { LabeledTextField } from "app/components/LabeledTextField";
 import { Form, FORM_ERROR } from "app/components/Form";
 import login from "app/auth/mutations/login";
 import { LoginInput } from "app/auth/validations";
+
 export const LoginForm = props => {
   const [loginMutation] = useMutation(login);
   return <div>
-      <h1>Login</h1>
+    <h1>Login</h1>
 
-      <Form submitText="Login" schema={LoginInput} initialValues={{
+    <Form submitText="Login" schema={LoginInput} initialValues={{
       email: "",
       password: ""
     }} onSubmit={async values => {
@@ -28,15 +29,15 @@ export const LoginForm = props => {
         }
       }
     }}>
-        <LabeledTextField name="email" label="Email" placeholder="Email" />
-        <LabeledTextField name="password" label="Password" placeholder="Password" type="password" />
-      </Form>
+      <LabeledTextField name="email" label="Email" placeholder="Email" />
+      <LabeledTextField name="password" label="Password" placeholder="Password" type="password" />
+    </Form>
 
-      <div style={{
+    <div style={{
       marginTop: "1rem"
     }}>
-        Or <Link href="/signup">Sign Up</Link>
-      </div>
-    </div>;
+      Or <Link href="/signup">Sign Up</Link>
+    </div>
+  </div>;
 };
 export default LoginForm;

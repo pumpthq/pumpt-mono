@@ -22,26 +22,26 @@ export function Form({
     submitting,
     submitError
   }) => <form onSubmit={handleSubmit} className="form" {...props}>
-          {
-      /* Form fields supplied as children are rendered here */
-    }
-          {children}
+      {
+        /* Form fields supplied as children are rendered here */
+      }
+      {children}
 
-          {submitError && <div role="alert" style={{
-      color: "red"
-    }}>
-              {submitError}
-            </div>}
+      {submitError && <div role="alert" style={{
+        color: "red"
+      }}>
+        {submitError}
+      </div>}
 
-          <button type="submit" disabled={submitting}>
-            {submitText}
-          </button>
+      <button type="submit" disabled={submitting}>
+        {submitText}
+      </button>
 
-          <style global jsx>{`
+      <style global jsx>{`
             .form > * + * {
               margin-top: 1rem;
             }
           `}</style>
-        </form>} />;
+    </form>} />;
 }
 export default Form;
