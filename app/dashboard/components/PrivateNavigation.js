@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { Link } from 'blitz'
-import BurgerIcon from './BurgerIcon'
-import MobileMenu from './MobileMenu'
+import BurgerIcon from '../../components/BurgerIcon'
+import MobileMenu from '../../components/MobileMenu'
 
-const PublicNavigation = () => {
+const PrivateNavigation = () => {
   const [open, setOpen] = React.useState(false)
 
   return (
@@ -12,26 +12,9 @@ const PublicNavigation = () => {
         <div className="brand">
           <img src="/logo.png" />
         </div>
-        <div className="nav-links">
-          <Link href="/candidates">
-            <a className="nav-link">For Candidates</a>
-          </Link>
-          <Link href="/employers">
-            <a className="nav-link">For Employers</a>
-          </Link>
-          <Link href="/about">
-            <a className="nav-link">About</a>
-          </Link>
-          <Link href="/blog">
-            <a className="nav-link">Blog</a>
-          </Link>
-        </div>
         <div className="login-buttons">
-          <Link href="/login">
-            <a className="nav-link">Log In</a>
-          </Link>
           <Link href="/signup">
-            <a className="nav-link sign-up">Get Started</a>
+            <a className="nav-link">Account</a>
           </Link>
         </div>
         <BurgerIcon open={open} setOpen={setOpen} />
@@ -51,11 +34,12 @@ const PublicNavigation = () => {
         .header {
           position: sticky;
           top: 0;
+          box-shadow: 0 5px 4px 0 rgba(0,0,0,.2);;
           background: rgb(28,28,28);
           z-index: 100;
           padding: 15px 30px;
           display: flex;
-          justify-content: space-around;
+          justify-content: space-between;
           align-items: center;
           width: 100%;
         }
@@ -88,4 +72,4 @@ const PublicNavigation = () => {
   )
 }
 
-export default PublicNavigation
+export default PrivateNavigation
