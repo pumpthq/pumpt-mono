@@ -7,14 +7,15 @@ export default async function signup(input, {
   // This throws an error if input is invalid
   const {
     email,
-    password
+    password,
+    role
   } = SignupInput.parse(input);
   const hashedPassword = await hashPassword(password);
   const user = await db.user.create({
     data: {
       email: email.toLowerCase(),
       hashedPassword,
-      role: "user"
+      role,
     },
     select: {
       id: true,
