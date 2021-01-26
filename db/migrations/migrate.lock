@@ -1,4 +1,3 @@
 # Prisma Migrate lockfile v1
 
-20210112023344-initial-migration
-20210112024159-test-migration
+20210123030815-initial-migration-for-models-v1

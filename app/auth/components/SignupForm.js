@@ -4,14 +4,16 @@ import { LabeledTextField } from "app/components/LabeledTextField";
 import { Form, FORM_ERROR } from "app/components/Form";
 import signup from "app/auth/mutations/signup";
 import { SignupInput } from "app/auth/validations";
+import { Field } from 'react-final-form'
 export const SignupForm = props => {
   const [signupMutation] = useMutation(signup);
   return <div>
-      <h1>Create an Account</h1>
+    <h1>Create an Account</h1>
 
-      <Form submitText="Create Account" schema={SignupInput} initialValues={{
+    <Form submitText="Create Account" schema={SignupInput} initialValues={{
       email: "",
-      password: ""
+      password: "",
+      role: ""
     }} onSubmit={async values => {
       try {
         await signupMutation(values);
@@ -29,9 +31,13 @@ export const SignupForm = props => {
         }
       }
     }}>
-        <LabeledTextField name="email" label="Email" placeholder="Email" />
-        <LabeledTextField name="password" label="Password" placeholder="Password" type="password" />
-      </Form>
-    </div>;
+      <LabeledTextField name="email" label="Email" placeholder="Email" />
+      <LabeledTextField name="password" label="Password" placeholder="Password" type="password" />
+      <Field component="select">
+        <option>Candidate</option>
+        <option>Company</option>
+      </Field>
+    </Form>
+  </div>;
 };
 export default SignupForm;
