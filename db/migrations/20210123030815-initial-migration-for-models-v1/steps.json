@@ -378,7 +378,7 @@
       "tag": "CreateField",
       "model": "User",
       "field": "company",
-      "type": "Company",
+      "type": "String",
       "arity": "Optional"
     },
     {
@@ -393,7 +393,7 @@
       "model": "User",
       "field": "emails",
       "type": "Email",
-      "arity": "Optional"
+      "arity": "List"
     },
     {
       "tag": "CreateModel",
@@ -766,8 +766,8 @@
       "tag": "CreateField",
       "model": "Candidate",
       "field": "employments",
-      "type": "Json",
-      "arity": "Optional"
+      "type": "String",
+      "arity": "List"
     },
     {
       "tag": "CreateField",
@@ -875,14 +875,14 @@
       "tag": "CreateField",
       "model": "Candidate",
       "field": "interests",
-      "type": "Json",
+      "type": "String",
       "arity": "List"
     },
     {
       "tag": "CreateField",
       "model": "Candidate",
       "field": "highestDegree",
-      "type": "Json",
+      "type": "String",
       "arity": "Optional"
     },
     {
@@ -1123,59 +1123,6 @@
     {
       "tag": "CreateField",
       "model": "Company",
-      "field": "user",
-      "type": "User",
-      "arity": "Optional"
-    },
-    {
-      "tag": "CreateDirective",
-      "location": {
-        "path": {
-          "tag": "Field",
-          "model": "Company",
-          "field": "user"
-        },
-        "directive": "relation"
-      }
-    },
-    {
-      "tag": "CreateArgument",
-      "location": {
-        "tag": "Directive",
-        "path": {
-          "tag": "Field",
-          "model": "Company",
-          "field": "user"
-        },
-        "directive": "relation"
-      },
-      "argument": "fields",
-      "value": "[userId]"
-    },
-    {
-      "tag": "CreateArgument",
-      "location": {
-        "tag": "Directive",
-        "path": {
-          "tag": "Field",
-          "model": "Company",
-          "field": "user"
-        },
-        "directive": "relation"
-      },
-      "argument": "references",
-      "value": "[id]"
-    },
-    {
-      "tag": "CreateField",
-      "model": "Company",
-      "field": "userId",
-      "type": "String",
-      "arity": "Optional"
-    },
-    {
-      "tag": "CreateField",
-      "model": "Company",
       "field": "name",
       "type": "String",
       "arity": "Required"
@@ -1215,9 +1162,9 @@
     {
       "tag": "CreateField",
       "model": "Company",
-      "field": "recruiter",
+      "field": "recruiters",
       "type": "Recruiter",
-      "arity": "Optional"
+      "arity": "List"
     },
     {
       "tag": "CreateField",
@@ -2236,6 +2183,38 @@
       "value": "false"
     },
     {
+      "tag": "CreateField",
+      "model": "Matching",
+      "field": "isBookmarked",
+      "type": "Boolean",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Matching",
+          "field": "isBookmarked"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Matching",
+          "field": "isBookmarked"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "false"
+    },
+    {
       "tag": "CreateModel",
       "model": "Vacancy"
     },
@@ -2481,7 +2460,7 @@
       "model": "Vacancy",
       "field": "location",
       "type": "String",
-      "arity": "Required"
+      "arity": "List"
     },
     {
       "tag": "CreateField",

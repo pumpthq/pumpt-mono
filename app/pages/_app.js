@@ -2,6 +2,13 @@ import { ErrorComponent, useRouter, AuthenticationError, AuthorizationError } fr
 import { ErrorBoundary } from "react-error-boundary";
 import { queryCache } from "react-query";
 import LoginForm from "app/auth/components/LoginForm";
+import { ChakraProvider, theme, CSSReset } from '@chakra-ui/react';
+import "@fortawesome/fontawesome-svg-core/styles.css"; // import Font Awesome CSS
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
+
+
+
 export default function App({
   Component,
   pageProps
@@ -14,8 +21,8 @@ export default function App({
     // data any time you reset the error boundary
     queryCache.resetErrorBoundaries();
   }}>
-      {getLayout(<Component {...pageProps} />)}
-    </ErrorBoundary>;
+    {getLayout(<Component {...pageProps} />)}
+  </ErrorBoundary>;
 }
 
 function RootErrorFallback({

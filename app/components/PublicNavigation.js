@@ -77,10 +77,12 @@ const PublicNavigation = () => {
 
         @media(max-width: 1210px){
           .nav-links{
-            display: none
+            display: none;
+            aria-hidden: true
           }
           .login-buttons{
-            display: none
+            display: none;
+            aria-hidden: true
           }
         }
       `}</style>

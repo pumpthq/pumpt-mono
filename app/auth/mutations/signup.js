@@ -19,7 +19,6 @@ export default async function signup(input, {
     },
     select: {
       id: true,
-      name: true,
       email: true,
       role: true
     }

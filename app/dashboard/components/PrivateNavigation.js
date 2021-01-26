@@ -34,7 +34,6 @@ const PrivateNavigation = () => {
         .header {
           position: sticky;
           top: 0;
-          box-shadow: 0 5px 4px 0 rgba(0,0,0,.2);;
           background: rgb(28,28,28);
           z-index: 100;
           padding: 15px 30px;

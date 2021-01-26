@@ -1,13 +1,15 @@
-import db from "./index"
+import * as React from 'react'
+import { useRouter, useMutation } from "blitz";
+import { useForm } from 'react-hook-form'
+import PublicLayout from "app/layouts/PublicLayout";
+import signup from "../../auth/mutations/signup";
+import candidate from '../../auth/mutations/candidates'
+import company from '../../auth/mutations/companies'
+import recruiter from '../../auth/mutations/recruiters'
+import match from '../../auth/mutations/matches'
+import keyword from '../../auth/mutations/keywords'
+import vacancy from '../../auth/mutations/vacancies'
 
-
-/*
- * This seed function is executed when you run `blitz db seed`.
- *
- * Probably you want to use a library like https://chancejs.com
- * or https://github.com/Marak/Faker.js to easily generate
- * realistic data.
- */
 let candidates = [
   {
     id: "1a71f6ea-b5f8-4b0d-914e-244562fa2dd4",
@@ -305,7 +307,7 @@ let recruiters = [
   {
     id: "02109cb7-eab3-429e-90fa-041e255f8ad9",
     company: "02109cb7-eab3-429e-90fa-041e255f8ad7",
-    userId: "b766e020-ba9a-4b63-9b4d-b2f8f24d5a8c",
+    user: "b766e020-ba9a-4b63-9b4d-b2f8f24d5a8c",
     firstName: "Tyler",
     lastName: "Perry",
     avatar: "https://res.cloudinary.com/pumpt/image/upload/v1611360412/recruiter-profile-images/Tyler_Perry_bxjki8.jpg",
@@ -489,7 +491,7 @@ let matches = [
   {
     id: "f8cbb876-56de-4163-9cf7-31fcdc839876",
     candidate: "02109cb7-eab3-429e-90fa-041e255f8ad4",
-    companyId: "02109cb7-eab3-429e-90fa-041e255f8ad6",
+    company: "02109cb7-eab3-429e-90fa-041e255f8ad6",
     vacancy: "7fe0a5de-ade8-45fe-a41c-365c20b49496",
     pdfScore: 13,
     score: 95,
@@ -509,7 +511,7 @@ let matches = [
   {
     id: "4f544cfb-5ee4-4b7e-8fc2-9008e0b4cf2a",
     candidate: "02109cb7-eab3-429e-90fa-041e255f8ad6",
-    companyId: "02109cb7-eab3-429e-90fa-041e255f8ad6",
+    company: "02109cb7-eab3-429e-90fa-041e255f8ad6",
     vacancy: "7fe0a5de-ade8-45fe-a41c-365c20b49496",
     pdfScore: 3,
     score: 0,
@@ -550,7 +552,7 @@ let matches = [
   {
     id: "147d41fa-4f12-47e3-88a5-ca11f41af486",
     candidate: "1a71f6ea-b5f8-4b0d-914e-244562fa2dd4",
-    companyId: "02109cb7-eab3-429e-90fa-041e255f8ad7",
+    company: "02109cb7-eab3-429e-90fa-041e255f8ad7",
     vacancy: "3077ee1b-c022-40c9-b72c-e42323c7131f",
     pdfScore: 17,
     score: 0,
@@ -591,7 +593,7 @@ let matches = [
   {
     id: "b97b68f2-a5fe-464f-a397-a63f1f74fd01",
     candidate: "02109cb7-eab3-429e-90fa-041e255f8ad4",
-    companyId: "02109cb7-eab3-429e-90fa-041e255f8ad7",
+    company: "02109cb7-eab3-429e-90fa-041e255f8ad7",
     vacancy: "3077ee1b-c022-40c9-b72c-e42323c7131f",
     pdfScore: 13,
     score: 0,
@@ -632,7 +634,7 @@ let matches = [
   {
     id: "273c1a15-a5ad-4d3f-a684-cf059733b920",
     candidate: "02109cb7-eab3-429e-90fa-041e255f8ad6",
-    companyId: "02109cb7-eab3-429e-90fa-041e255f8ad7",
+    company: "02109cb7-eab3-429e-90fa-041e255f8ad7",
     vacancy: "3077ee1b-c022-40c9-b72c-e42323c7131f",
     pdfScore: 3,
     score: 0,
@@ -673,7 +675,7 @@ let matches = [
   {
     id: "a03cfa6c-b928-424b-aa83-ffa272ba5a63",
     candidate: "02109cb7-eab3-429e-90fa-041e255f8ad5",
-    companyId: "02109cb7-eab3-429e-90fa-041e255f8ad6",
+    company: "02109cb7-eab3-429e-90fa-041e255f8ad6",
     vacancy: "7fe0a5de-ade8-45fe-a41c-365c20b49496",
     pdfScore: 20,
     score: 0,
@@ -714,7 +716,7 @@ let matches = [
   {
     id: "3d584801-c84c-4868-9ca2-ffc7b8196aaa",
     candidate: "02109cb7-eab3-429e-90fa-041e255f8ad5",
-    companyId: "02109cb7-eab3-429e-90fa-041e255f8ad7",
+    company: "02109cb7-eab3-429e-90fa-041e255f8ad7",
     vacancy: "3077ee1b-c022-40c9-b72c-e42323c7131f",
     pdfScore: 20,
     score: 0,
@@ -756,6 +758,7 @@ let matches = [
 
 let keywords = [
   {
+    id: "2bbfe8b2-7c00-488b-8667-57f1c0c6d880",
     keywordList: [
       "Yield",
       "Programmatic",
@@ -791,43 +794,120 @@ let keywords = [
   }
 ]
 
-const seed = async () => {
-  try {
-    candidates.forEach(entry = async () => {
-      await db.candidate.create({
-        data: entry
-      })
-    })
-    companies.forEach(entry = async () => {
-      await db.company.create({
-        data: entry
-      })
-    })
-    keywords.forEach(entry = async () => {
-      await db.keywords.create({
-        data: entry
-      })
-    })
-    recruiters.forEach(entry = async () => {
-      await db.recruiter.create({
-        data: entry
-      })
-    })
-    vacancies.forEach(entry = async () => {
-      await db.vacancy.create({
-        data: entry
-      })
-    })
-    matches.forEach(entry = async () => {
-      await db.matching.create({
-        data: entry
-      })
-    })
-  } catch (error) {
-    console.log('Something went wrong', error)
+const SignupPage = () => {
+  const [signupMutation] = useMutation(signup);
+  const [candidateMutation] = useMutation(candidate);
+  const [companyMutation] = useMutation(company);
+  const [matchMutation] = useMutation(match);
+  const [vacancyMutation] = useMutation(vacancy);
+  const [keywordsMutation] = useMutation(keyword);
+  const [recruitersMutation] = useMutation(recruiter);
+
+  const { register, handleSubmit, errors } = useForm();
+
+  const seedDatabase = async () => {
+    try {
+      await candidates.forEach(entry => candidateMutation(entry))
+      await companies.forEach(entry => companyMutation(entry))
+      await recruiters.forEach(entry => recruitersMutation(entry))
+      await vacancies.forEach(entry => vacancyMutation(entry))
+      await matches.forEach(entry => matchMutation(entry))
+      await keywords.forEach(entry => keywordsMutation(entry))
+    } catch (error) {
+      console.log('Something went wrong', error)
+    }
   }
+
+  const onSubmit = async (data) => {
+    try {
+      await signupMutation(data);
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  console.log(errors);
+  const router = useRouter();
+  return (
+    <div>
+      <main className="signup-page">
+        <div className="signup-form">
+          <h1>Create an Account</h1>
+          <form className="form" onSubmit={handleSubmit(onSubmit)}>
+            <input type="text" placeholder="Email" name="email" ref={register({ required: true, pattern: /^\S+@\S+$/i })} />
+            <input type="password" placeholder="Password" name="password" ref={register} />
+            <select name="role" ref={register}>
+              <option value="CANDIDATE">Candidate</option>
+              <option value="EMPLOYER">Employer</option>
+            </select>
+            <input type="submit" />
+          </form>
+          <p>Already have an account? Sign In</p>
+          <p>See our Terms and Conditions</p>
+        </div>
+        <button onClick={seedDatabase}>Seed</button>
+      </main>
+      <style jsx>{`
+        .signup-page {
+          height: 94vh;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+        }
+        .signup-form {
+          padding: 0 20px;
+          background-color: #262626;
+          border-radius: 12px;
+          height: 45%;
+          width: 25%;
+          min-height: 400px;
+          min-width: 340px;
+        }
+        .signup-form p {
+          padding: 0 20px;
+        }
+        .form {
+          margin: 0 30px;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .form input[type="text"] {
+          margin: 10px 0;
+          height: 40px;
+          border-style: none;
+          border-radius: 5px;
+        }
+        .form input[type="password"] {
+          margin: 10px 0;
+          height: 40px;
+          border-style: none;
+          border-radius: 5px;
+        }
+        .form select {
+          width: 30%;
+          margin: 10px 0;
+          height: 35px;
+        }
+        .form input[type=submit] {
+          margin: 10px 0;
+          height: 40px;
+          width: 80px;
+          background-color: #8C50FF;
+          color: white;
+          border-style: none;
+          border-radius: 6px;
+        }
+      `}</style>
+    </div>
+
+  )
 };
 
+SignupPage.getLayout = page => <PublicLayout title="Sign Up">{page}</PublicLayout>;
 
-
-export default seed;
+export default SignupPage;
+{/* <div>
+    <SignupForm onSuccess={() => router.push("/")} /> 
+  </div>; */}

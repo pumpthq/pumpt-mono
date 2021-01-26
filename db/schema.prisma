@@ -33,9 +33,9 @@ model User {
   sessions          Session[]
   candidate         Candidate?
   recruiter         Recruiter?
-  company           Company?
+  company           String?
   linkedInData      Json?
-  emails            Email?
+  emails            Email[]
 }
 
 model Session {
@@ -60,7 +60,7 @@ model Candidate {
   firstName            String?
   lastName             String?
   active               Boolean   @default(true)
-  employments          Json?
+  employments          String[]
   recentJob            String?
   values               String[]
   recentWorkingAreas   Json[]
@@ -72,8 +72,8 @@ model Candidate {
   resumeId             String?
   resumeName           String?
   workingExperience    Json[]
-  interests            Json[]
-  highestDegree        Json?
+  interests            String[]
+  highestDegree        String?
   education            Json[]
   location             String?
   locationCoordinates  Json?
@@ -87,16 +87,14 @@ model Candidate {
 
 // REVISIT: Should a company only have one recruiter or the option to add more?
 model Company {
-  id                      String     @id @default(uuid())
-  registeredAt            DateTime   @default(now())
-  updatedAt               DateTime   @updatedAt
-  user                    User?      @relation(fields: [userId], references: [id])
-  userId                  String?
-  name                    String     @unique
+  id                      String      @id @default(uuid())
+  registeredAt            DateTime    @default(now())
+  updatedAt               DateTime    @updatedAt
+  name                    String      @unique
   type                    String[]
   foundDate               String
   employeesAmount         String
-  recruiter               Recruiter?
+  recruiters              Recruiter[]
   headquartersLocation    String
   headquartersCoordinates Json?
   values                  String[]
@@ -106,11 +104,11 @@ model Company {
   background              String?
   images                  String[]
   description             String?
-  quoteOrMotto            String     @default("")
-  isPremium               Boolean    @default(false)
-  isFilled                Boolean    @default(false)
+  quoteOrMotto            String      @default("")
+  isPremium               Boolean     @default(false)
+  isFilled                Boolean     @default(false)
   fillSteps               String[]
-  fillProgress            Int        @default(0)
+  fillProgress            Int         @default(0)
   matching                Matching?
   vacancies               Vacancy[]
 }
@@ -145,18 +143,19 @@ model Keywords {
 }
 
 model Matching {
-  id          String     @id @default(uuid())
-  createdAt   DateTime   @default(now())
-  candidate   Candidate? @relation(fields: [candidateId], references: [id])
-  candidateId String?
-  company     Company?   @relation(fields: [companyId], references: [id])
-  companyId   String?
-  vacancy     Vacancy?   @relation(fields: [vacancyId], references: [id])
-  vacancyId   String?
-  pdfScore    Int        @default(0)
-  score       Int        @default(0)
-  breakdown   Json?
-  isApproved  Boolean    @default(false)
+  id           String     @id @default(uuid())
+  createdAt    DateTime   @default(now())
+  candidate    Candidate? @relation(fields: [candidateId], references: [id])
+  candidateId  String?
+  company      Company?   @relation(fields: [companyId], references: [id])
+  companyId    String?
+  vacancy      Vacancy?   @relation(fields: [vacancyId], references: [id])
+  vacancyId    String?
+  pdfScore     Int        @default(0)
+  score        Int        @default(0)
+  breakdown    Json?
+  isApproved   Boolean    @default(false)
+  isBookmarked Boolean    @default(false)
 }
 
 model Vacancy {
@@ -174,7 +173,7 @@ model Vacancy {
   degree              String?
   employment          String[]
   description         String?
-  location            String
+  location            String[]
   locationCoordinates Json?
   locations           Json[]
   status              String?

@@ -1,6 +1,6 @@
-# Migration `20210119010420-defining-models-v1`
+# Migration `20210123030815-initial-migration-for-models-v1`
 
-This migration has been generated at 1/18/2021, 5:04:20 PM.
+This migration has been generated at 1/22/2021, 7:08:15 PM.
 You can check out the [state of the schema](./schema.prisma) after the migration.
 
 ## Database Steps
@@ -21,6 +21,7 @@ CREATE TABLE "User" (
     "restorePassToken" TEXT NOT NULL DEFAULT E'',
     "confirmEmailToken" TEXT NOT NULL DEFAULT E'',
     "role" "Role" NOT NULL,
+    "company" TEXT,
     "linkedInData" JSONB,
 
     PRIMARY KEY ("id")
@@ -48,7 +49,7 @@ CREATE TABLE "Candidate" (
     "firstName" TEXT,
     "lastName" TEXT,
     "active" BOOLEAN NOT NULL DEFAULT true,
-    "employments" JSONB,
+    "employments" TEXT[],
     "recentJob" TEXT,
     "values" TEXT[],
     "recentWorkingAreas" JSONB[],
@@ -60,8 +61,8 @@ CREATE TABLE "Candidate" (
     "resumeId" TEXT,
     "resumeName" TEXT,
     "workingExperience" JSONB[],
-    "interests" JSONB[],
-    "highestDegree" JSONB,
+    "interests" TEXT[],
+    "highestDegree" TEXT,
     "education" JSONB[],
     "location" TEXT,
     "locationCoordinates" JSONB,
@@ -78,7 +79,6 @@ CREATE TABLE "Company" (
     "id" TEXT NOT NULL,
     "registeredAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
-    "userId" TEXT,
     "name" TEXT NOT NULL,
     "type" TEXT[],
     "foundDate" TEXT NOT NULL,
@@ -142,6 +142,7 @@ CREATE TABLE "Matching" (
     "score" INTEGER NOT NULL DEFAULT 0,
     "breakdown" JSONB,
     "isApproved" BOOLEAN NOT NULL DEFAULT false,
+    "isBookmarked" BOOLEAN NOT NULL DEFAULT false,
 
     PRIMARY KEY ("id")
 )
@@ -158,7 +159,7 @@ CREATE TABLE "Vacancy" (
     "degree" TEXT,
     "employment" TEXT[],
     "description" TEXT,
-    "location" TEXT NOT NULL,
+    "location" TEXT[],
     "locationCoordinates" JSONB,
     "locations" JSONB[],
     "status" TEXT,
@@ -198,13 +199,7 @@ CREATE UNIQUE INDEX "Candidate_userId_unique" ON "Candidate"("userId")
 
 CREATE UNIQUE INDEX "Company.name_unique" ON "Company"("name")
 
-CREATE UNIQUE INDEX "Company_userId_unique" ON "Company"("userId")
-
 CREATE UNIQUE INDEX "Recruiter_userId_unique" ON "Recruiter"("userId")
-
-CREATE UNIQUE INDEX "Recruiter_companyId_unique" ON "Recruiter"("companyId")
-
-CREATE UNIQUE INDEX "Email_userId_unique" ON "Email"("userId")
 
 CREATE UNIQUE INDEX "Matching_candidateId_unique" ON "Matching"("candidateId")
 
@@ -215,8 +210,6 @@ CREATE UNIQUE INDEX "Matching_vacancyId_unique" ON "Matching"("vacancyId")
 ALTER TABLE "Session" ADD FOREIGN KEY("userId")REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE
 
 ALTER TABLE "Candidate" ADD FOREIGN KEY("userId")REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE
-
-ALTER TABLE "Company" ADD FOREIGN KEY("userId")REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE
 
 ALTER TABLE "Recruiter" ADD FOREIGN KEY("userId")REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE
 
@@ -241,10 +234,10 @@ ALTER TABLE "Message" ADD FOREIGN KEY("conversationId")REFERENCES "Conversation"
 
 ```diff
 diff --git schema.prisma schema.prisma
-migration ..20210119010420-defining-models-v1
+migration ..20210123030815-initial-migration-for-models-v1
 --- datamodel.dml
 +++ datamodel.dml
-@@ -1,0 +1,203 @@
+@@ -1,0 +1,202 @@
 +// This is your Prisma schema file,
 +// learn more about it in the docs: https://pris.ly/d/prisma-schema
 +
@@ -280,9 +273,9 @@ migration ..20210119010420-defining-models-v1
 +  sessions          Session[]
 +  candidate         Candidate?
 +  recruiter         Recruiter?
-+  company           Company?
++  company           String?
 +  linkedInData      Json?
-+  emails            Email?
++  emails            Email[]
 +}
 +
 +model Session {
@@ -307,7 +300,7 @@ migration ..20210119010420-defining-models-v1
 +  firstName            String?
 +  lastName             String?
 +  active               Boolean   @default(true)
-+  employments          Json?
++  employments          String[]
 +  recentJob            String?
 +  values               String[]
 +  recentWorkingAreas   Json[]
@@ -319,8 +312,8 @@ migration ..20210119010420-defining-models-v1
 +  resumeId             String?
 +  resumeName           String?
 +  workingExperience    Json[]
-+  interests            Json[]
-+  highestDegree        Json?
++  interests            String[]
++  highestDegree        String?
 +  education            Json[]
 +  location             String?
 +  locationCoordinates  Json?
@@ -334,16 +327,14 @@ migration ..20210119010420-defining-models-v1
 +
 +// REVISIT: Should a company only have one recruiter or the option to add more?
 +model Company {
-+  id                      String     @id @default(uuid())
-+  registeredAt            DateTime   @default(now())
-+  updatedAt               DateTime   @updatedAt
-+  user                    User?      @relation(fields: [userId], references: [id])
-+  userId                  String?
-+  name                    String     @unique
++  id                      String      @id @default(uuid())
++  registeredAt            DateTime    @default(now())
++  updatedAt               DateTime    @updatedAt
++  name                    String      @unique
 +  type                    String[]
 +  foundDate               String
 +  employeesAmount         String
-+  recruiter               Recruiter?
++  recruiters              Recruiter[]
 +  headquartersLocation    String
 +  headquartersCoordinates Json?
 +  values                  String[]
@@ -353,11 +344,11 @@ migration ..20210119010420-defining-models-v1
 +  background              String?
 +  images                  String[]
 +  description             String?
-+  quoteOrMotto            String     @default("")
-+  isPremium               Boolean    @default(false)
-+  isFilled                Boolean    @default(false)
++  quoteOrMotto            String      @default("")
++  isPremium               Boolean     @default(false)
++  isFilled                Boolean     @default(false)
 +  fillSteps               String[]
-+  fillProgress            Int        @default(0)
++  fillProgress            Int         @default(0)
 +  matching                Matching?
 +  vacancies               Vacancy[]
 +}
@@ -392,18 +383,19 @@ migration ..20210119010420-defining-models-v1
 +}
 +
 +model Matching {
-+  id          String     @id @default(uuid())
-+  createdAt   DateTime   @default(now())
-+  candidate   Candidate? @relation(fields: [candidateId], references: [id])
-+  candidateId String?
-+  company     Company?   @relation(fields: [companyId], references: [id])
-+  companyId   String?
-+  vacancy     Vacancy?   @relation(fields: [vacancyId], references: [id])
-+  vacancyId   String?
-+  pdfScore    Int        @default(0)
-+  score       Int        @default(0)
-+  breakdown   Json?
-+  isApproved  Boolean    @default(false)
++  id           String     @id @default(uuid())
++  createdAt    DateTime   @default(now())
++  candidate    Candidate? @relation(fields: [candidateId], references: [id])
++  candidateId  String?
++  company      Company?   @relation(fields: [companyId], references: [id])
++  companyId    String?
++  vacancy      Vacancy?   @relation(fields: [vacancyId], references: [id])
++  vacancyId    String?
++  pdfScore     Int        @default(0)
++  score        Int        @default(0)
++  breakdown    Json?
++  isApproved   Boolean    @default(false)
++  isBookmarked Boolean    @default(false)
 +}
 +
 +model Vacancy {
@@ -421,7 +413,7 @@ migration ..20210119010420-defining-models-v1
 +  degree              String?
 +  employment          String[]
 +  description         String?
-+  location            String
++  location            String[]
 +  locationCoordinates Json?
 +  locations           Json[]
 +  status              String?

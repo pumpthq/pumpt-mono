@@ -1,17 +1,7 @@
-import db from "./index"
-
-
-/*
- * This seed function is executed when you run `blitz db seed`.
- *
- * Probably you want to use a library like https://chancejs.com
- * or https://github.com/Marak/Faker.js to easily generate
- * realistic data.
- */
-let candidates = [
+exports.candidates = [
   {
     id: "1a71f6ea-b5f8-4b0d-914e-244562fa2dd4",
-    user: "c5fc6cbf-8e6e-4d96-91b6-0f0c6a2076d4",
+    userId: "c5fc6cbf-8e6e-4d96-91b6-0f0c6a2076d4",
     firstName: "Richard",
     lastName: "Prins",
     active: true,
@@ -76,7 +66,7 @@ let candidates = [
   },
   {
     id: "02109cb7-eab3-429e-90fa-041e255f8ad4",
-    user: "bca2c54f-3999-409b-956d-6f453edd4fc8",
+    userId: "bca2c54f-3999-409b-956d-6f453edd4fc8",
     firstName: "Alan",
     lastName: "Smith",
     active: true,
@@ -117,7 +107,7 @@ let candidates = [
   },
   {
     id: "02109cb7-eab3-429e-90fa-041e255f8ad5",
-    user: "1d7ce646-6091-411d-b537-a037b7837cd4",
+    userId: "1d7ce646-6091-411d-b537-a037b7837cd4",
     firstName: "Bob",
     lastName: "Smith",
     active: true,
@@ -179,7 +169,7 @@ let candidates = [
   },
   {
     id: "02109cb7-eab3-429e-90fa-041e255f8ad6",
-    user: "031b870d-68bc-49b3-b9b3-09ccc034a86d",
+    userId: "031b870d-68bc-49b3-b9b3-09ccc034a86d",
     firstName: "Elon",
     lastName: "Musk",
     active: true,
@@ -242,7 +232,7 @@ let candidates = [
   }
 ]
 
-let companies = [
+exports.companies = [
   {
     id: "02109cb7-eab3-429e-90fa-041e255f8ad7",
     name: "Rosetta Software",
@@ -292,11 +282,11 @@ let companies = [
   }
 ]
 
-let recruiters = [
+exports.recruiters = [
   {
     id: "02109cb7-eab3-429e-90fa-041e255f8ad8",
-    company: "02109cb7-eab3-429e-90fa-041e255f8ad6",
-    user: "1e671205-dd05-48ff-b3c4-38b8ebf3ff73",
+    companyId: "02109cb7-eab3-429e-90fa-041e255f8ad6",
+    userId: "1e671205-dd05-48ff-b3c4-38b8ebf3ff73",
     firstName: "Rebecca",
     lastName: "Ng",
     avatar: "https://res.cloudinary.com/pumpt/image/upload/v1611360413/recruiter-profile-images/Rebecca_jzz7lr.jpg",
@@ -304,7 +294,7 @@ let recruiters = [
   },
   {
     id: "02109cb7-eab3-429e-90fa-041e255f8ad9",
-    company: "02109cb7-eab3-429e-90fa-041e255f8ad7",
+    companyId: "02109cb7-eab3-429e-90fa-041e255f8ad7",
     userId: "b766e020-ba9a-4b63-9b4d-b2f8f24d5a8c",
     firstName: "Tyler",
     lastName: "Perry",
@@ -313,7 +303,7 @@ let recruiters = [
   }
 ]
 
-let vacancies = [
+exports.vacancies = [
   {
     id: "3077ee1b-c022-40c9-b72c-e42323c7131f",
     title: "Sales",
@@ -325,8 +315,8 @@ let vacancies = [
       }
     ],
     salary: "$400K-$499K",
-    company: "02109cb7-eab3-429e-90fa-041e255f8ad7",
-    recruiter: "02109cb7-eab3-429e-90fa-041e255f8ad9",
+    companyId: "02109cb7-eab3-429e-90fa-041e255f8ad7",
+    recruiterId: "02109cb7-eab3-429e-90fa-041e255f8ad9",
     experience: "16+ years",
     degree: "Graduate",
     employment: [
@@ -389,8 +379,8 @@ let vacancies = [
       }
     ],
     salary: "$100K-$149K",
-    company: "02109cb7-eab3-429e-90fa-041e255f8ad6",
-    recruiter: "02109cb7-eab3-429e-90fa-041e255f8ad8",
+    companyId: "02109cb7-eab3-429e-90fa-041e255f8ad6",
+    recruiterId: "02109cb7-eab3-429e-90fa-041e255f8ad8",
     experience: "0-2 years",
     degree: "Undergraduate",
     employment: [
@@ -444,12 +434,119 @@ let vacancies = [
   }
 ]
 
-let matches = [
+exports.users = [
+  {
+    id: "",
+    email: "",
+    hashedPassword: "",
+    isApproved: false,
+    isCompleted: false,
+    isRejected: false,
+    isFinished: false,
+    restorePassToken: "",
+    confirmEmailToken: "",
+    role: "",
+    linkedInData: {},
+  },
+  {
+    id: "",
+    email: "",
+    hashedPassword: "",
+    isApproved: false,
+    isCompleted: false,
+    isRejected: false,
+    isFinished: false,
+    restorePassToken: "",
+    confirmEmailToken: "",
+    role: "",
+    linkedInData: {},
+  },
+  {
+    id: "",
+    email: "",
+    hashedPassword: "",
+    isApproved: false,
+    isCompleted: false,
+    isRejected: false,
+    isFinished: false,
+    restorePassToken: "",
+    confirmEmailToken: "",
+    role: "",
+    linkedInData: {},
+  },
+  {
+    id: "",
+    email: "",
+    hashedPassword: "",
+    isApproved: false,
+    isCompleted: false,
+    isRejected: false,
+    isFinished: false,
+    restorePassToken: "",
+    confirmEmailToken: "",
+    role: "",
+    linkedInData: {},
+  },
+  {
+    id: "",
+    email: "",
+    hashedPassword: "",
+    isApproved: false,
+    isCompleted: false,
+    isRejected: false,
+    isFinished: false,
+    restorePassToken: "",
+    confirmEmailToken: "",
+    role: "",
+    linkedInData: {},
+  },
+  {
+    id: "",
+    email: "",
+    hashedPassword: "",
+    isApproved: false,
+    isCompleted: false,
+    isRejected: false,
+    isFinished: false,
+    restorePassToken: "",
+    confirmEmailToken: "",
+    role: "",
+    linkedInData: {},
+  },
+  {
+    id: "",
+    email: "",
+    hashedPassword: "",
+    isApproved: false,
+    isCompleted: false,
+    isRejected: false,
+    isFinished: false,
+    restorePassToken: "",
+    confirmEmailToken: "",
+    role: "",
+    linkedInData: {},
+  },
+  {
+    id: "",
+    email: "",
+    hashedPassword: "",
+    isApproved: false,
+    isCompleted: false,
+    isRejected: false,
+    isFinished: false,
+    restorePassToken: "",
+    confirmEmailToken: "",
+    role: "",
+    linkedInData: {},
+  }
+]
+
+exports.matches = [
   {
     id: "4f564e5f-14e5-42b9-9ca3-07d3353af1a8",
-    candidate: "1a71f6ea-b5f8-4b0d-914e-244562fa2dd4",
-    company: "02109cb7-eab3-429e-90fa-041e255f8ad6",
-    vacancy: "7fe0a5de-ade8-45fe-a41c-365c20b49496",
+    candidateId: "1a71f6ea-b5f8-4b0d-914e-244562fa2dd4",
+    companyId: "02109cb7-eab3-429e-90fa-041e255f8ad6",
+    vacancyId: "7fe0a5de-ade8-45fe-a41c-365c20b49496",
     pdfScore: 17,
     score: 0,
     breakdown: {
@@ -488,9 +585,9 @@ let matches = [
   },
   {
     id: "f8cbb876-56de-4163-9cf7-31fcdc839876",
-    candidate: "02109cb7-eab3-429e-90fa-041e255f8ad4",
+    candidateId: "02109cb7-eab3-429e-90fa-041e255f8ad4",
     companyId: "02109cb7-eab3-429e-90fa-041e255f8ad6",
-    vacancy: "7fe0a5de-ade8-45fe-a41c-365c20b49496",
+    vacancyId: "7fe0a5de-ade8-45fe-a41c-365c20b49496",
     pdfScore: 13,
     score: 95,
     breakdown: {
@@ -508,9 +605,9 @@ let matches = [
   },
   {
     id: "4f544cfb-5ee4-4b7e-8fc2-9008e0b4cf2a",
-    candidate: "02109cb7-eab3-429e-90fa-041e255f8ad6",
+    candidateId: "02109cb7-eab3-429e-90fa-041e255f8ad6",
     companyId: "02109cb7-eab3-429e-90fa-041e255f8ad6",
-    vacancy: "7fe0a5de-ade8-45fe-a41c-365c20b49496",
+    vacancyId: "7fe0a5de-ade8-45fe-a41c-365c20b49496",
     pdfScore: 3,
     score: 0,
     breakdown: {
@@ -549,9 +646,9 @@ let matches = [
   },
   {
     id: "147d41fa-4f12-47e3-88a5-ca11f41af486",
-    candidate: "1a71f6ea-b5f8-4b0d-914e-244562fa2dd4",
+    candidateId: "1a71f6ea-b5f8-4b0d-914e-244562fa2dd4",
     companyId: "02109cb7-eab3-429e-90fa-041e255f8ad7",
-    vacancy: "3077ee1b-c022-40c9-b72c-e42323c7131f",
+    vacancyId: "3077ee1b-c022-40c9-b72c-e42323c7131f",
     pdfScore: 17,
     score: 0,
     breakdown: {
@@ -590,9 +687,9 @@ let matches = [
   },
   {
     id: "b97b68f2-a5fe-464f-a397-a63f1f74fd01",
-    candidate: "02109cb7-eab3-429e-90fa-041e255f8ad4",
+    candidateId: "02109cb7-eab3-429e-90fa-041e255f8ad4",
     companyId: "02109cb7-eab3-429e-90fa-041e255f8ad7",
-    vacancy: "3077ee1b-c022-40c9-b72c-e42323c7131f",
+    vacancyId: "3077ee1b-c022-40c9-b72c-e42323c7131f",
     pdfScore: 13,
     score: 0,
     breakdown: {
@@ -631,9 +728,9 @@ let matches = [
   },
   {
     id: "273c1a15-a5ad-4d3f-a684-cf059733b920",
-    candidate: "02109cb7-eab3-429e-90fa-041e255f8ad6",
+    candidateId: "02109cb7-eab3-429e-90fa-041e255f8ad6",
     companyId: "02109cb7-eab3-429e-90fa-041e255f8ad7",
-    vacancy: "3077ee1b-c022-40c9-b72c-e42323c7131f",
+    vacancyId: "3077ee1b-c022-40c9-b72c-e42323c7131f",
     pdfScore: 3,
     score: 0,
     breakdown: {
@@ -672,9 +769,9 @@ let matches = [
   },
   {
     id: "a03cfa6c-b928-424b-aa83-ffa272ba5a63",
-    candidate: "02109cb7-eab3-429e-90fa-041e255f8ad5",
+    candidateId: "02109cb7-eab3-429e-90fa-041e255f8ad5",
     companyId: "02109cb7-eab3-429e-90fa-041e255f8ad6",
-    vacancy: "7fe0a5de-ade8-45fe-a41c-365c20b49496",
+    vacancyId: "7fe0a5de-ade8-45fe-a41c-365c20b49496",
     pdfScore: 20,
     score: 0,
     breakdown: {
@@ -713,9 +810,9 @@ let matches = [
   },
   {
     id: "3d584801-c84c-4868-9ca2-ffc7b8196aaa",
-    candidate: "02109cb7-eab3-429e-90fa-041e255f8ad5",
+    candidateId: "02109cb7-eab3-429e-90fa-041e255f8ad5",
     companyId: "02109cb7-eab3-429e-90fa-041e255f8ad7",
-    vacancy: "3077ee1b-c022-40c9-b72c-e42323c7131f",
+    vacancyId: "3077ee1b-c022-40c9-b72c-e42323c7131f",
     pdfScore: 20,
     score: 0,
     breakdown: {
@@ -754,8 +851,9 @@ let matches = [
   }
 ]
 
-let keywords = [
+exports.keywords = [
   {
+    id: "2bbfe8b2-7c00-488b-8667-57f1c0c6d880",
     keywordList: [
       "Yield",
       "Programmatic",
@@ -791,43 +889,3 @@ let keywords = [
   }
 ]
 
-const seed = async () => {
-  try {
-    candidates.forEach(entry = async () => {
-      await db.candidate.create({
-        data: entry
-      })
-    })
-    companies.forEach(entry = async () => {
-      await db.company.create({
-        data: entry
-      })
-    })
-    keywords.forEach(entry = async () => {
-      await db.keywords.create({
-        data: entry
-      })
-    })
-    recruiters.forEach(entry = async () => {
-      await db.recruiter.create({
-        data: entry
-      })
-    })
-    vacancies.forEach(entry = async () => {
-      await db.vacancy.create({
-        data: entry
-      })
-    })
-    matches.forEach(entry = async () => {
-      await db.matching.create({
-        data: entry
-      })
-    })
-  } catch (error) {
-    console.log('Something went wrong', error)
-  }
-};
-
-
-
-export default seed;

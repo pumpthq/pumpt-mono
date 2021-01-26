@@ -3,7 +3,7 @@ import CandidateLayout from '../../../../layouts/CandidateLayout'
 const CandidatesDashboardPage = () => {
   return (
     <>
-      <h2>Candidate Dashboard</h2>
+      <h2>Dashboard</h2>
     </>
   )
 }

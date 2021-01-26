@@ -11,7 +11,9 @@ class MyDocument extends Document {
   // }
   render() {
     return <Html lang="en">
-      <DocumentHead />
+      <DocumentHead>
+        <script src="https://kit.fontawesome.com/df9026f031.js" crossorigin="anonymous"></script>
+      </DocumentHead>
       <body>
         <Main />
         <BlitzScript />
