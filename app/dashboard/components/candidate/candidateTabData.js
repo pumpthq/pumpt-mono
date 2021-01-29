@@ -1,0 +1,1 @@
+export const tabsData = ['Matches', 'Bookmarked', 'Approved']

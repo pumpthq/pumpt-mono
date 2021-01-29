@@ -1,13 +1,12 @@
 import * as React from 'react'
-import { Link, useMutation } from "blitz"
+import { Link, useMutation, useQuery } from "blitz"
 import PublicLayout from "app/layouts/PublicLayout"
 import logout from "app/auth/mutations/logout"
 import { useCurrentUser } from "app/hooks/useCurrentUser"
-
 /*
- * This file is just for a pleasant getting started page for your new app.
- * You can delete everything in here and start from scratch if you like.
- */
+* This file is just for a pleasant getting started page for your new app.
+* You can delete everything in here and start from scratch if you like.
+*/
 
 const UserInfo = () => {
   const currentUser = useCurrentUser()
@@ -25,16 +24,16 @@ const UserInfo = () => {
           Logout
         </button>
         <div>
-          User id: <code>{currentUser.id}</code>
+          User <pre>{JSON.stringify(currentUser, null, 4)}</pre>
           <br />
-          User role: <code>{currentUser.role}</code>
         </div>
       </>
     )
   } else {
+
     return (
       <>
-        <Link href="/signup">
+        <Link href="/sign-up">
           <a className="button small">
             <strong>Sign Up</strong>
           </a>
@@ -124,7 +123,11 @@ const Home = () => {
               </div>
             </div>
           </section>
-          <section className="full-page"></section>
+          <section className="full-page">
+            <React.Suspense fallback="Loading...">
+              <UserInfo />
+            </React.Suspense>
+          </section>
         </div>
       </main>
       <style jsx global>{`

@@ -1,0 +1,41 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "UpdateField",
+      "model": "Candidate",
+      "field": "recentWorkingAreas",
+      "arity": "Optional"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Candidate",
+      "field": "workingExperience",
+      "arity": "Optional"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Candidate",
+      "field": "education",
+      "arity": "Optional"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Company",
+      "field": "officeLocations",
+      "arity": "Optional"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Vacancy",
+      "field": "industries",
+      "arity": "Optional"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Vacancy",
+      "field": "locations",
+      "arity": "Optional"
+    }
+  ]
+}

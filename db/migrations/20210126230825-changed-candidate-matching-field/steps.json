@@ -1,0 +1,17 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateField",
+      "model": "Candidate",
+      "field": "matches",
+      "type": "Matching",
+      "arity": "List"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Candidate",
+      "field": "matching"
+    }
+  ]
+}
