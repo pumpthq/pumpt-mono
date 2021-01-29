@@ -1,10 +1,14 @@
-
+import Tabs from 'app/dashboard/components/Tabs'
 import * as React from 'react'
 import CandidateLayout from '../../../../../layouts/CandidateLayout'
+import { tabsData } from '../../../../components/candidate/candidateTabData'
 
 const CandidateMatchesPage = () => {
-  const [tabData, setTabData] = React.useState({
-
+  const [tabData, setTabData] = React.useState(tabsData)
+  const [selectedTab, setSelectedTab] = React.useState('Matches')
+  console.log(tabData)
+  React.useEffect(() => {
+    console.log(selectedTab)
   })
   return (
     <>
@@ -12,9 +16,7 @@ const CandidateMatchesPage = () => {
       <p>You can view all of your matches here</p>
       <div className="match-container">
         <div className="match-tabs">
-          {/* <div className="match-tab"><p>Matches</p><div className="line"></div></div>
-          <div className="match-tab"><p>Approved</p><div className="line"></div></div>
-          <div className="match-tab"><p>Bookmarked</p><div className="line"></div></div> */}
+          <Tabs tabs={tabData} selectTabHandler={setSelectedTab} selectedTab={selectedTab} />
 
         </div>
       </div>
@@ -24,14 +26,9 @@ const CandidateMatchesPage = () => {
           width: 100%;
           margin-top: 50px;
           display: flex;
-          border: 1px solid white;
         }
         .match-tabs {
-          padding: 0 10px;
-          display: flex;
-        }
-        .match-tab {
-          width: 140px;
+          width: 35%
         }
         .line {
           width: 60%;

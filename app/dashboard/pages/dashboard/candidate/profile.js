@@ -1,4 +1,5 @@
-import { Profiler } from 'react'
+import * as React from 'react'
+import { useCurrentUser } from "app/hooks/useCurrentUser"
 import ProfileSection from '../../../components/ProfileSection'
 import CandidateLayout from '../../../../layouts/CandidateLayout'
 import LabeledField from '../../../components/LabeledField'
@@ -6,10 +7,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle, faSortDown } from "@fortawesome/free-solid-svg-icons"
 
 const CandidatesProfilePage = () => {
+  const [profileState, setProfileState] = React.useState()
+  const profile = useCurrentUser()
+
+  React.useEffect(() => {
+    setProfileState(profile)
+    console.log(profileState)
+  })
   const is = false
   return (
     <>
-      <h2>{`Hi {username}, welcome back!`}</h2>
+      <h2>{`Hi ${profileState ? profileState.profile.firstName : ""}, welcome back!`}</h2>
       <p>Make sure to keep your profile up to date to get more matches!</p>
       <div className="edit-profile-link">Edit Profile</div>
       <div className="profile-info">
@@ -20,41 +28,49 @@ const CandidatesProfilePage = () => {
               RichardSPrins
             </LabeledField>
             <LabeledField label="Email" width="45%" innerHeight="50px">
-              richardsprins@gmail.com
+              {profileState?.user.email}
             </LabeledField>
             <LabeledField label="First Name" width="45%" innerHeight="50px">
-              Richard
+              {profileState?.profile.firstName}
             </LabeledField>
             <LabeledField label="Last Name" width="45%" innerHeight="50px">
-              Prins
+              {profileState?.profile.lastName}
             </LabeledField>
           </ProfileSection>
           <ProfileSection heading="Location">
             <LabeledField label="City" width="45%" innerHeight="50px">
-              Atlanta
+              {profileState?.profile.location.split(', ')[0]}
             </LabeledField>
             <LabeledField label="State" width="45%" innerHeight="50px">
-              Georgia
+              {profileState?.profile.location.split(', ')[1]}
             </LabeledField>
-            <p style={{ marginLeft: '10px', marginTop: '40px' }}>Willing to relocate? <FontAwesomeIcon style={{ color: is ? '#04B00F' : '#F52528' }} icon={faTimesCircle} /></p>
+            <p style={{ marginLeft: '10px', marginTop: '40px' }}>
+              Willing to relocate?
+              {
+                profileState?.profile.abilityToRelocate ? <FontAwesomeIcon style={{ color: '#04B00F', marginLeft: '10px' }} icon={faTimesCircle} />
+                  : <FontAwesomeIcon style={{ color: '#F52528', marginLeft: '10px' }} icon={faTimesCircle} />
+              }
+            </p>
 
           </ProfileSection>
           <ProfileSection heading="Candidate Information">
             <LabeledField label="Current Job Title" width="45%" innerHeight="50px">
-              Coordinator
+              {profileState?.profile.recentJob}
             </LabeledField>
             <LabeledField label="Years of Experience" width="45%" innerHeight="50px">
-              3-5 years
+              {profileState?.profile.recentAreaExperience}
+
             </LabeledField>
             <LabeledField label="Current Total Compensation" width="45%" innerHeight="50px">
-              {`<$100K`}
+              {profileState?.profile.recentAnnualIncome}
+
             </LabeledField>
           </ProfileSection>
         </div>
         <div className="profile-right">
-          <div className="profile-pic"></div>
+          <div><img className="profile-pic" src={profileState?.profile.avatar} /></div>
           <h3>Richard Prins</h3>
-          <p style={{ marginTop: '0' }}>Atlanta, Georgia</p>
+          <p style={{ marginTop: '0' }}>{profile?.profile.location}</p>
           <p style={{ fontWeight: 'bold' }}>Coordinator</p>
           <p style={{ marginTop: '0' }}>Current Employer</p>
           <div className="resume-dropdown">
@@ -105,8 +121,6 @@ const CandidatesProfilePage = () => {
           width: 140px;
           height: 140px;
           border-radius: 70px;
-          background: rgb(56,255,209);
-          background: linear-gradient(322deg, rgba(56,255,209,1) 0%, rgba(81,110,108,1) 100%);
         }
         .resume-dropdown {
           display: flex;

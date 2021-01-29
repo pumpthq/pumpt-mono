@@ -1,3 +1,8 @@
 # Prisma Migrate lockfile v1
 
 20210123030815-initial-migration-for-models-v1
+20210126224519-restart
+20210126224856-changed-vacancy-model-to-allow-for-multiple-matches-as-foreign-key
+20210126230455-changing-json-fields
+20210126230825-changed-candidate-matching-field
+20210126233646-candidate-update

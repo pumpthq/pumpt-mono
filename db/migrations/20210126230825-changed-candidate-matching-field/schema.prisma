@@ -3,7 +3,7 @@
 
 datasource db {
   provider = "postgres"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
@@ -64,7 +64,6 @@ model Candidate {
   recentJob            String?
   values               String[]
   recentWorkingAreas   Json?
-  interestWorkingAreas String[]
   recentAreaExperience String?
   preferredCompanySize String?
   recentAnnualIncome   String?

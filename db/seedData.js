@@ -17,16 +17,8 @@ exports.candidates = [
       "Start-up | Entrepreneurial"
     ],
     recentWorkingAreas: [
-      {
-        "_id": "5fcfeadefa04f77e56319918",
-        "value": "Digital",
-        "parent": "Marketing | Creative"
-      },
-      {
-        "_id": "5fcfeadefa04f77e56319919",
-        "value": "Integrated",
-        "parent": "Marketing | Creative"
-      }
+      { "_id": "5fcfeadefa04f77e56319918", "value": "Digital", "parent": "Marketing | Creative" },
+      { "_id": "5fcfeadefa04f77e56319919", "value": "Integrated", "parent": "Marketing | Creative" }
     ],
     recentAreaExperience: "3-5 years",
     preferredCompanySize: "10-50 employees",
@@ -47,15 +39,9 @@ exports.candidates = [
     resumeName: "6bbcc2ce-00a8-4c12-9cf8-b7dd8d7023df (1).pdf",
     highestDegree: "High School",
     location: "Atlanta, GA, USA",
-    locationCoordinates: {
-      "lat": 33.7489954,
-      "lng": -84.3879824
-    },
+    locationCoordinates: { "lat": 33.7489954, "lng": -84.3879824 },
     abilityToRelocate: false,
-    socialMedia: {
-      "linkedIn": "www.linkedin.com/richard-prins-jr/",
-      "twitter": "@scott_prins"
-    },
+    socialMedia: { "linkedIn": "www.linkedin.com/richard-prins-jr/", "twitter": "@scott_prins" },
     isFilled: false,
     fillSteps: [
       "CANDIDATE_APPLICATION_LOCATION_STEP",
@@ -155,9 +141,7 @@ exports.candidates = [
       }
     ],
     location: "Boston, MA, United States",
-    locationCoordinates: {},
     abilityToRelocate: true,
-    socialMedia: {},
     isFilled: false,
     fillSteps: [
       "CANDIDATE_APPLICATION_PROFILE_PHOTO_STEP",
@@ -184,6 +168,7 @@ exports.candidates = [
         "parent": "Sales"
       }
     ],
+
     recentAreaExperience: "0-2 years",
     preferredCompanySize: "10-50 employees",
     recentAnnualIncome: "$500K+",
@@ -224,9 +209,7 @@ exports.candidates = [
     },
     isFilled: false,
     fillSteps: [
-      "CANDIDATE_APPLICATION_EXPERIENCE_STEP",
-      "CANDIDATE_APPLICATION_LOCATION_STEP",
-      "CANDIDATE_APPLICATION_SOCIAL_MEDIA_STEP"
+      "CANDIDATE_APPLICATION_EXPERIENCE_STEP", "CANDIDATE_APPLICATION_LOCATION_STEP", "CANDIDATE_APPLICATION_SOCIAL_MEDIA_STEP"
     ],
     fillProgress: 67,
   }
@@ -241,6 +224,7 @@ exports.companies = [
     employeesAmount: "< 10 employees",
     headquartersLocation: "Cleveland, OH, United States",
     socialMedia: {
+
       "website": "http://website.com",
       "linkedIn": "http://website.com",
       "twitter": "@acc"
@@ -888,4 +872,3 @@ exports.keywords = [
     ]
   }
 ]
-

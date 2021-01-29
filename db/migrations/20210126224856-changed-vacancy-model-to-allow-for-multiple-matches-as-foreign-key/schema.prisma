@@ -3,7 +3,7 @@
 
 datasource db {
   provider = "postgres"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
@@ -53,37 +53,36 @@ model Session {
 }
 
 model Candidate {
-  id                   String     @id @default(uuid())
-  updatedAt            DateTime   @updatedAt
-  user                 User?      @relation(fields: [userId], references: [id])
+  id                   String    @id @default(uuid())
+  updatedAt            DateTime  @updatedAt
+  user                 User?     @relation(fields: [userId], references: [id])
   userId               String?
   firstName            String?
   lastName             String?
-  active               Boolean    @default(true)
+  active               Boolean   @default(true)
   employments          String[]
   recentJob            String?
   values               String[]
-  recentWorkingAreas   Json?
-  interestWorkingAreas String[]
+  recentWorkingAreas   Json[]
   recentAreaExperience String?
   preferredCompanySize String?
   recentAnnualIncome   String?
-  avatar               String     @default("")
+  avatar               String    @default("")
   skills               String[]
   resumeId             String?
   resumeName           String?
-  workingExperience    Json?
+  workingExperience    Json[]
   interests            String[]
   highestDegree        String?
-  education            Json?
+  education            Json[]
   location             String?
   locationCoordinates  Json?
-  abilityToRelocate    Boolean    @default(false)
+  abilityToRelocate    Boolean   @default(false)
   socialMedia          Json?
-  isFilled             Boolean    @default(false)
+  isFilled             Boolean   @default(false)
   fillSteps            String[]
-  fillProgress         Int        @default(0)
-  matches              Matching[]
+  fillProgress         Int       @default(0)
+  matching             Matching?
 }
 
 // REVISIT: Should a company only have one recruiter or the option to add more?
@@ -100,7 +99,7 @@ model Company {
   headquartersCoordinates Json?
   values                  String[]
   socialMedia             Json?
-  officeLocations         Json?
+  officeLocations         Json[]
   logo                    String?
   background              String?
   images                  String[]
@@ -164,7 +163,7 @@ model Vacancy {
   createdAt           DateTime   @default(now())
   matching            Matching[]
   title               String
-  industries          Json?
+  industries          Json[]
   salary              String?
   company             Company?   @relation(fields: [companyId], references: [id])
   companyId           String?
@@ -176,7 +175,7 @@ model Vacancy {
   description         String?
   location            String[]
   locationCoordinates Json?
-  locations           Json?
+  locations           Json[]
   status              String?
   responsibilities    String[]
   requirements        String[]
