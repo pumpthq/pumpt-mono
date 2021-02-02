@@ -1,7 +1,5 @@
 import db from "db";
-export default async function getCurrentUser(_ = null, {
-  session
-}) {
+export default async function getCurrentUser(_ = null, { session }) {
   if (!session.userId) return null;
   const user = await db.user.findFirst({
     where: {
@@ -33,10 +31,7 @@ export default async function getCurrentUser(_ = null, {
       break;
   }
 
-  let userObj = {
-    user,
-    profile
-  }
 
-  return userObj
+
+  return { user, profile }
 }

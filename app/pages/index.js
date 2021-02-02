@@ -67,13 +67,38 @@ const Home = () => {
               </div>
             </div>
             <div className="hero-right">
-              <img className="hero-image" src="/Analytics.png" />
+              <video className="hero-image" src="https://res.cloudinary.com/pumpt/video/upload/v1611942874/IMG_2238_fh99fm.mov" controls />
             </div>
           </section>
           <section className="industries full-page">
             <div className="section-left">
+              <div className="industry-info">
+                <h2 style={{ fontSize: '34px' }}>We Provide Jobs and Talent in the Following Areas</h2>
+                <div className="line purple"></div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </div>
+            </div>
+            <div className="section-right">
               <div className="industry-cards">
+
                 <div className="card-column left">
+                  <div className="card">
+                    <img className="industry-icon" src="/assets/purse_icon_white.png" />
+                    <p className="card-heading">Business Development</p>
+                    <div className="line blue"></div>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  </div>
+                  <div className="card">
+                    <img className="industry-icon" src="/assets/target_icon_white.png" />
+                    <p className="card-heading">Sales & Ad Operations</p>
+                    <div className="line purple"></div>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  </div>
+                </div>
+                <div className="card-column right">
                   <div className="card">
                     <img className="industry-icon" src="/assets/clipboard_icon_white.png" />
                     <p className="card-heading">Sales & Sales Management</p>
@@ -96,38 +121,15 @@ const Home = () => {
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                   </div>
                 </div>
-                <div className="card-column right">
-                  <div className="card">
-                    <img className="industry-icon" src="/assets/purse_icon_white.png" />
-                    <p className="card-heading">Business Development</p>
-                    <div className="line blue"></div>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  </div>
-                  <div className="card">
-                    <img className="industry-icon" src="/assets/target_icon_white.png" />
-                    <p className="card-heading">Sales & Ad Operations</p>
-                    <div className="line purple"></div>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  </div>
-                </div>
               </div>
             </div>
-            <div className="section-right">
-              <div className="industry-info">
-                <h2 style={{ fontSize: '34px' }}>We Provide Jobs and Talent in the Following Areas</h2>
-                <div className="line purple"></div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              </div>
-            </div>
+
           </section>
-          <section className="full-page">
+          {/* <section className="full-page">
             <React.Suspense fallback="Loading...">
               <UserInfo />
             </React.Suspense>
-          </section>
+          </section> */}
         </div>
       </main>
       <style jsx global>{`
@@ -181,6 +183,8 @@ const Home = () => {
           justify-content: center;
           align-items: center;
           border-radius: 10px;
+          -webkit-box-shadow: 0px 0px 15px 1px #AB5AFF; 
+          box-shadow: 0px 0px 15px 1px #AB5AFF;
         }
 
         .header {
@@ -250,6 +254,8 @@ const Home = () => {
           font-size: 16px;
           font-weight: 600;
           text-decoration: none;
+          -webkit-box-shadow: 0px 0px 15px 1px #AB5AFF; 
+          box-shadow: 0px 0px 15px 1px #AB5AFF;
         }
         .hero-right {
           margin: 0;
@@ -260,15 +266,15 @@ const Home = () => {
           align-items: center;
         }
         .hero-image {
-          width: 80%;
-          max-width: 770px;
+          width: 100%;
+          max-width: 950px;
           min-width: 400px;
         }
 
         .industries {
           display: flex;
         }
-        .section-left {
+        .section-right {
           width: 55%;
           max-width: 850px;
           height: 100%;
@@ -277,7 +283,7 @@ const Home = () => {
           
           align-items: center;
         }
-        .section-right {
+        .section-left {
           width: 45%;
           max-width: 850px;
           height: 100%;
