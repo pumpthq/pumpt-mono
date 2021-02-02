@@ -15,7 +15,6 @@ const Tabs = props => {
         .tabs {
           display: flex;
           height: 40px;
-          justify-content: space-between;
         }
         .tab-name {
           width: 110px; 
