@@ -47,11 +47,12 @@ const Menu = ({ open }) => {
           justify-content: center;
           background: #141414;
           text-align: left;
-          padding: 2rem;
+          padding: 1.5rem;
           transition: transform 0.3s ease-in-out;
         }
         .sign-up{
-          height: 40px;
+          margin-top: 15px;
+          height: 20px;
           width: 200px;
           background-color: #8C50FF;
           display: flex;

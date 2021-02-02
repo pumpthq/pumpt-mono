@@ -171,7 +171,6 @@ class MyDocument extends Document {
 
         }
         .full-page {
-          border: 1px solid white;
           display: flex;
           width: 100%;
           height: 100vh;

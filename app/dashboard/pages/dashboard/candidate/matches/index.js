@@ -2,14 +2,13 @@ import Tabs from 'app/dashboard/components/Tabs'
 import * as React from 'react'
 import CandidateLayout from '../../../../../layouts/CandidateLayout'
 import { tabsData } from '../../../../components/candidate/candidateTabData'
+import CandidateMatchesList from '../../../../components/candidate/CandidateMatchesList'
+import { matchData } from '../../../../matchData'
 
 const CandidateMatchesPage = () => {
   const [tabData, setTabData] = React.useState(tabsData)
   const [selectedTab, setSelectedTab] = React.useState('Matches')
-  console.log(tabData)
-  React.useEffect(() => {
-    console.log(selectedTab)
-  })
+
   return (
     <>
       <h2>Your Matches</h2>
@@ -19,6 +18,9 @@ const CandidateMatchesPage = () => {
           <Tabs tabs={tabData} selectTabHandler={setSelectedTab} selectedTab={selectedTab} />
 
         </div>
+        <div className="match-tab-content">
+          <CandidateMatchesList matches={matchData} selectedTab={selectedTab} />
+        </div>
       </div>
       <style jsx>{`
         .match-container {
@@ -26,9 +28,21 @@ const CandidateMatchesPage = () => {
           width: 100%;
           margin-top: 50px;
           display: flex;
+          flex-direction: column;
         }
         .match-tabs {
-          width: 35%
+          display: block;
+          height: 45px;
+        }
+        .match-tab-content {
+          overflow-y: scroll;
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+          height: 100%;
+        }
+        .match-tab-content::-webkit-scrollbar {
+          width: 0px;
+          background: transparent; /* make scrollbar transparent */
         }
         .line {
           width: 60%;

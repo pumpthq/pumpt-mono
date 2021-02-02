@@ -447,9 +447,9 @@ let vacancies = [
 let matches = [
   {
     id: "4f564e5f-14e5-42b9-9ca3-07d3353af1a8",
-    candidate: "1a71f6ea-b5f8-4b0d-914e-244562fa2dd4",
-    company: "02109cb7-eab3-429e-90fa-041e255f8ad6",
-    vacancy: "7fe0a5de-ade8-45fe-a41c-365c20b49496",
+    candidateId: "1a71f6ea-b5f8-4b0d-914e-244562fa2dd4",
+    companyId: "02109cb7-eab3-429e-90fa-041e255f8ad6",
+    vacancyId: "7fe0a5de-ade8-45fe-a41c-365c20b49496",
     pdfScore: 17,
     score: 0,
     breakdown: {
@@ -488,9 +488,9 @@ let matches = [
   },
   {
     id: "f8cbb876-56de-4163-9cf7-31fcdc839876",
-    candidate: "02109cb7-eab3-429e-90fa-041e255f8ad4",
+    candidateId: "02109cb7-eab3-429e-90fa-041e255f8ad4",
     companyId: "02109cb7-eab3-429e-90fa-041e255f8ad6",
-    vacancy: "7fe0a5de-ade8-45fe-a41c-365c20b49496",
+    vacancyId: "7fe0a5de-ade8-45fe-a41c-365c20b49496",
     pdfScore: 13,
     score: 95,
     breakdown: {
@@ -508,9 +508,9 @@ let matches = [
   },
   {
     id: "4f544cfb-5ee4-4b7e-8fc2-9008e0b4cf2a",
-    candidate: "02109cb7-eab3-429e-90fa-041e255f8ad6",
+    candidateId: "02109cb7-eab3-429e-90fa-041e255f8ad6",
     companyId: "02109cb7-eab3-429e-90fa-041e255f8ad6",
-    vacancy: "7fe0a5de-ade8-45fe-a41c-365c20b49496",
+    vacancyId: "7fe0a5de-ade8-45fe-a41c-365c20b49496",
     pdfScore: 3,
     score: 0,
     breakdown: {
@@ -549,9 +549,9 @@ let matches = [
   },
   {
     id: "147d41fa-4f12-47e3-88a5-ca11f41af486",
-    candidate: "1a71f6ea-b5f8-4b0d-914e-244562fa2dd4",
+    candidateId: "1a71f6ea-b5f8-4b0d-914e-244562fa2dd4",
     companyId: "02109cb7-eab3-429e-90fa-041e255f8ad7",
-    vacancy: "3077ee1b-c022-40c9-b72c-e42323c7131f",
+    vacancyId: "3077ee1b-c022-40c9-b72c-e42323c7131f",
     pdfScore: 17,
     score: 0,
     breakdown: {
@@ -590,9 +590,9 @@ let matches = [
   },
   {
     id: "b97b68f2-a5fe-464f-a397-a63f1f74fd01",
-    candidate: "02109cb7-eab3-429e-90fa-041e255f8ad4",
+    candidateId: "02109cb7-eab3-429e-90fa-041e255f8ad4",
     companyId: "02109cb7-eab3-429e-90fa-041e255f8ad7",
-    vacancy: "3077ee1b-c022-40c9-b72c-e42323c7131f",
+    vacancyId: "3077ee1b-c022-40c9-b72c-e42323c7131f",
     pdfScore: 13,
     score: 0,
     breakdown: {
@@ -631,9 +631,9 @@ let matches = [
   },
   {
     id: "273c1a15-a5ad-4d3f-a684-cf059733b920",
-    candidate: "02109cb7-eab3-429e-90fa-041e255f8ad6",
+    candidateId: "02109cb7-eab3-429e-90fa-041e255f8ad6",
     companyId: "02109cb7-eab3-429e-90fa-041e255f8ad7",
-    vacancy: "3077ee1b-c022-40c9-b72c-e42323c7131f",
+    vacancyId: "3077ee1b-c022-40c9-b72c-e42323c7131f",
     pdfScore: 3,
     score: 0,
     breakdown: {
@@ -672,9 +672,9 @@ let matches = [
   },
   {
     id: "a03cfa6c-b928-424b-aa83-ffa272ba5a63",
-    candidate: "02109cb7-eab3-429e-90fa-041e255f8ad5",
+    candidateId: "02109cb7-eab3-429e-90fa-041e255f8ad5",
     companyId: "02109cb7-eab3-429e-90fa-041e255f8ad6",
-    vacancy: "7fe0a5de-ade8-45fe-a41c-365c20b49496",
+    vacancyId: "7fe0a5de-ade8-45fe-a41c-365c20b49496",
     pdfScore: 20,
     score: 0,
     breakdown: {
@@ -713,9 +713,9 @@ let matches = [
   },
   {
     id: "3d584801-c84c-4868-9ca2-ffc7b8196aaa",
-    candidate: "02109cb7-eab3-429e-90fa-041e255f8ad5",
+    candidateId: "02109cb7-eab3-429e-90fa-041e255f8ad5",
     companyId: "02109cb7-eab3-429e-90fa-041e255f8ad7",
-    vacancy: "3077ee1b-c022-40c9-b72c-e42323c7131f",
+    vacancyId: "3077ee1b-c022-40c9-b72c-e42323c7131f",
     pdfScore: 20,
     score: 0,
     breakdown: {

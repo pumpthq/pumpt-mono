@@ -5,49 +5,41 @@ import CandidateLayout from '../../../../layouts/CandidateLayout'
 import LabeledField from '../../../components/LabeledField'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle, faSortDown } from "@fortawesome/free-solid-svg-icons"
+import Skeleton from 'react-loading-skeleton'
 
 const CandidatesProfilePage = () => {
-  const [profileState, setProfileState] = React.useState()
-  const profile = useCurrentUser()
+  const currentUser = useCurrentUser()
 
-  React.useEffect(() => {
-    setProfileState(profile)
-    console.log(profileState)
-  })
-  const is = false
   return (
     <>
-      <h2>{`Hi ${profileState ? profileState.profile.firstName : ""}, welcome back!`}</h2>
+      <h2>{`Hi ${currentUser ? currentUser.profile.firstName : ""}, welcome back!`}</h2>
       <p>Make sure to keep your profile up to date to get more matches!</p>
       <div className="edit-profile-link">Edit Profile</div>
       <div className="profile-info">
         <div className="profile-left">
           <h3>My Profile</h3>
           <ProfileSection heading="Account Information">
-            <LabeledField label="Username" width="45%" innerHeight="50px">
-              RichardSPrins
-            </LabeledField>
-            <LabeledField label="Email" width="45%" innerHeight="50px">
-              {profileState?.user.email}
-            </LabeledField>
             <LabeledField label="First Name" width="45%" innerHeight="50px">
-              {profileState?.profile.firstName}
+              {currentUser?.profile.firstName}
             </LabeledField>
             <LabeledField label="Last Name" width="45%" innerHeight="50px">
-              {profileState?.profile.lastName}
+              {currentUser?.profile.lastName}
+            </LabeledField>
+            <LabeledField label="Email" width="45%" innerHeight="50px">
+              {currentUser?.user.email}
             </LabeledField>
           </ProfileSection>
           <ProfileSection heading="Location">
             <LabeledField label="City" width="45%" innerHeight="50px">
-              {profileState?.profile.location.split(', ')[0]}
+              {currentUser?.profile.location.split(', ')[0]}
             </LabeledField>
             <LabeledField label="State" width="45%" innerHeight="50px">
-              {profileState?.profile.location.split(', ')[1]}
+              {currentUser?.profile.location.split(', ')[1]}
             </LabeledField>
             <p style={{ marginLeft: '10px', marginTop: '40px' }}>
               Willing to relocate?
               {
-                profileState?.profile.abilityToRelocate ? <FontAwesomeIcon style={{ color: '#04B00F', marginLeft: '10px' }} icon={faTimesCircle} />
+                currentUser?.profile.abilityToRelocate ? <FontAwesomeIcon style={{ color: '#04B00F', marginLeft: '10px' }} icon={faTimesCircle} />
                   : <FontAwesomeIcon style={{ color: '#F52528', marginLeft: '10px' }} icon={faTimesCircle} />
               }
             </p>
@@ -55,22 +47,23 @@ const CandidatesProfilePage = () => {
           </ProfileSection>
           <ProfileSection heading="Candidate Information">
             <LabeledField label="Current Job Title" width="45%" innerHeight="50px">
-              {profileState?.profile.recentJob}
+              {currentUser?.profile.recentJob}
             </LabeledField>
             <LabeledField label="Years of Experience" width="45%" innerHeight="50px">
-              {profileState?.profile.recentAreaExperience}
+              {currentUser?.profile.recentAreaExperience}
 
             </LabeledField>
             <LabeledField label="Current Total Compensation" width="45%" innerHeight="50px">
-              {profileState?.profile.recentAnnualIncome}
+              {currentUser?.profile.recentAnnualIncome}
 
             </LabeledField>
           </ProfileSection>
         </div>
         <div className="profile-right">
-          <div><img className="profile-pic" src={profileState?.profile.avatar} /></div>
+
+          <div>{currentUser ? <img className="profile-pic" src={currentUser?.profile.avatar} /> : <Skeleton circle={true} height={140} width={140} />}</div>
           <h3>Richard Prins</h3>
-          <p style={{ marginTop: '0' }}>{profile?.profile.location}</p>
+          <p style={{ marginTop: '0' }}>{currentUser?.profile.location}</p>
           <p style={{ fontWeight: 'bold' }}>Coordinator</p>
           <p style={{ marginTop: '0' }}>Current Employer</p>
           <div className="resume-dropdown">

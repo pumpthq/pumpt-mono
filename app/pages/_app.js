@@ -5,6 +5,7 @@ import LoginForm from "app/auth/components/LoginForm";
 import { ChakraProvider, theme, CSSReset } from '@chakra-ui/react';
 import "@fortawesome/fontawesome-svg-core/styles.css"; // import Font Awesome CSS
 import { config } from "@fortawesome/fontawesome-svg-core";
+import { SkeletonTheme } from "react-loading-skeleton";
 config.autoAddCss = false;
 
 
@@ -21,7 +22,9 @@ export default function App({
     // data any time you reset the error boundary
     queryCache.resetErrorBoundaries();
   }}>
-    {getLayout(<Component {...pageProps} />)}
+    <SkeletonTheme color="#2f2f2f" highlightColor="#444">
+      {getLayout(<Component {...pageProps} />)}
+    </SkeletonTheme>
   </ErrorBoundary>;
 }
 

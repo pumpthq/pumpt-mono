@@ -10,7 +10,7 @@ const PublicNavigation = () => {
     <>
       <header className="header">
         <div className="brand">
-          <img src="/logo.png" />
+          <img className="logo" src="/logo.png" />
         </div>
         <div className="nav-links">
           <Link href="/candidates">
@@ -38,9 +38,12 @@ const PublicNavigation = () => {
         <MobileMenu open={open} setOpen={setOpen} />
       </header>
       <style jsx>{`
+      .logo {
+        width: 200px;
+      }
       .sign-up{
-          height: 40px;
-          width: 120px;
+          height: 45px;
+          width: 130px;
           background-color: #8C50FF;
           display: flex;
           justify-content: center;
@@ -70,6 +73,7 @@ const PublicNavigation = () => {
           justify-content: space-between
         }
         .nav-link {
+          font-size: 20px;
           margin: 0 15px;
           text-decoration: none;
           color:#E8EFF3;
