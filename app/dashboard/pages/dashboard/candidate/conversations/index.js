@@ -18,8 +18,8 @@ const CandidateConversationsPage = () => {
             <div className="conversation selected-chat">
               <div className="conversation-preview-profile-img"></div>
               <div className="conversation-meta">
-                <p className="recruiter-name-meta" style={{ margin: '5px 0', fontSize: '18px', fontWeight: 'bold' }}>Recruiter Name</p>
-                <p style={{ margin: '5px 0' }}>Conversation Preview...</p>
+                <p className="recruiter-name-meta" style={{ margin: '5px 0', fontSize: '18px', fontWeight: 'bold' }}>Company Name</p>
+                <p style={{ margin: '5px 0' }}>Recruiter Name</p>
               </div>
               <div className="conversation-timestamp">
                 <p>1 hour ago</p>
@@ -28,8 +28,8 @@ const CandidateConversationsPage = () => {
             <div className="conversation">
               <div className="conversation-preview-profile-img"></div>
               <div className="conversation-meta">
-                <p className="recruiter-name-meta" style={{ margin: '5px 0', fontSize: '18px', fontWeight: 'bold' }}>Recruiter Name</p>
-                <p style={{ margin: '5px 0' }}>Conversation Preview...</p>
+                <p className="recruiter-name-meta" style={{ margin: '5px 0', fontSize: '18px', fontWeight: 'bold' }}>Company Name</p>
+                <p style={{ margin: '5px 0' }}>Recruiter Name</p>
               </div>
               <div className="conversation-timestamp">
                 <p>1 hour ago</p>
@@ -38,8 +38,8 @@ const CandidateConversationsPage = () => {
             <div className="conversation">
               <div className="conversation-preview-profile-img"></div>
               <div className="conversation-meta">
-                <p className="recruiter-name-meta" style={{ margin: '5px 0', fontSize: '18px', fontWeight: 'bold' }}>Recruiter Name</p>
-                <p style={{ margin: '5px 0' }}>Conversation Preview...</p>
+                <p className="recruiter-name-meta" style={{ margin: '5px 0', fontSize: '18px', fontWeight: 'bold' }}>Company Name</p>
+                <p style={{ margin: '5px 0' }}>Recruiter Name</p>
               </div>
               <div className="conversation-timestamp">
                 <p>1 hour ago</p>
@@ -48,8 +48,8 @@ const CandidateConversationsPage = () => {
             <div className="conversation">
               <div className="conversation-preview-profile-img"></div>
               <div className="conversation-meta">
-                <p className="recruiter-name-meta" style={{ margin: '5px 0', fontSize: '18px', fontWeight: 'bold' }}>Recruiter Name</p>
-                <p style={{ margin: '5px 0' }}>Conversation Preview...</p>
+                <p className="recruiter-name-meta" style={{ margin: '5px 0', fontSize: '18px', fontWeight: 'bold' }}>Company Name</p>
+                <p style={{ margin: '5px 0' }}>Recruiter Name</p>
               </div>
               <div className="conversation-timestamp">
                 <p>1 hour ago</p>
@@ -63,7 +63,7 @@ const CandidateConversationsPage = () => {
           <div className="chat-header">
             <div className="recruiter-chat-name">
               <h3 style={{ margin: '5px 0' }}>Recruiter Name</h3>
-              <p style={{ margin: '5px 0', color: 'gray' }}>Recruiter Position</p>
+              <p style={{ margin: '5px 0', color: 'gray' }}>Company Name</p>
             </div>
           </div>
           <div className="chat-view"></div>
@@ -131,7 +131,7 @@ const CandidateConversationsPage = () => {
         }
 
         .conversation-meta {
-          color: gray;
+          color: white;
           margin-left: 5%;
           display: flex;
           flex-direction: column;
@@ -148,7 +148,7 @@ const CandidateConversationsPage = () => {
           background-color: grey;
         }
         .conversation-timestamp {
-          color: gray;
+          color: white;
           font-size: 12px;
         }
 
@@ -180,8 +180,10 @@ const CandidateConversationsPage = () => {
           outline: none
         }
         .selected-chat {
-          background: rgb(56,255,209);
-          background: linear-gradient(322deg, rgba(56,255,209,1) 0%, rgba(81,110,108,1) 100%);
+          background: #8C50FF;
+          background: -webkit-linear-gradient(to right, #5A83F5, #8C50FF);
+          background: linear-gradient(to right, #5A83F5, #8C50FF);
+          box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.50);
         }
         .send-button {
           height: 100%;
