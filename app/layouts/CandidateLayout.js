@@ -2,6 +2,9 @@ import PrivateNavigation from '../dashboard/components/PrivateNavigation'
 import SidebarLink from '../components/SidebarLink'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouseUser, faBuilding, faComment, faSearch, faUser } from "@fortawesome/free-solid-svg-icons";
+import { useCurrentUser } from "app/hooks/useCurrentUser"
+import Skeleton from 'react-loading-skeleton'
+
 
 const CandidateLayout = ({ children }) => {
   return (
@@ -65,6 +68,7 @@ const CandidateLayout = ({ children }) => {
         {children}
       </div>
       <style jsx>{`
+
         .content {
           margin-left:250px;
           padding: 30px;

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as EmptyStar } from "@fortawesome/free-regular-svg-icons"
-import { faStar as Bookmarked, faMapMarkerAlt as Location } from "@fortawesome/free-solid-svg-icons"
+import { faStar as Bookmarked, faMapMarkerAlt as Location, faBuilding as Company } from "@fortawesome/free-solid-svg-icons"
 
 // vacancy.title
 // vacancy.location
@@ -23,11 +23,14 @@ const CandidateMatch = ({ match }) => {
         </div>
         <div className="match-heading">
           <h2 className="match-title">{match.vacancy.title}</h2>
-          <p className="match-company-name">{match.company.name}</p>
+          <p className="match-company-name"><FontAwesomeIcon style={{ marginRight: '10px' }} icon={Company} />{match.company.name}</p>
           <p style={{ color: 'gray' }}><FontAwesomeIcon style={{ marginRight: '10px' }} icon={Location} />{match.vacancy.location}</p>
         </div>
-        <div className="match-link">
-          View Full Description
+        <div className="match-bottom">
+          <div className="match-link">
+            See More
+          </div>
+          <span style={{ color: 'gray', marginRight: '10px' }}>2 Days Ago</span>
         </div>
       </div>
       <style jsx>{`
@@ -49,6 +52,12 @@ const CandidateMatch = ({ match }) => {
           display: flex;
           justify-content: space-between;
         }
+        .match-bottom{
+          display: flex;
+          align-items: baseline;
+          justify-content: space-between;
+          width: 100%;
+        }
         .match-heading {
           display: flex;
           flex-direction: column;
@@ -66,9 +75,9 @@ const CandidateMatch = ({ match }) => {
         }
         .match-link {
           margin-top: 10px;
-          align-self: center;
+          padding: 0 15px;
           height: 50px;
-          width: 70%;
+          min-width: 150px; 
           background: #8C50FF;
           border-radius: 8px;
           display: flex;
