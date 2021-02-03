@@ -12,8 +12,7 @@ export default ({ label, width, innerHeight, children }) => {
           height: ${innerHeight};
           padding: 8px;
           background-color: inherit;
-          box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.30);
-          border-radius: 10px;
+          border-bottom: 2px solid white;
           display: flex;
           justify-content: flex-start;
           align-items: center
@@ -26,3 +25,21 @@ export default ({ label, width, innerHeight, children }) => {
     </>
   )
 }
+
+
+/*
+      .info-field {
+          height: ${innerHeight};
+          padding: 8px;
+          background-color: inherit;
+          box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.30);
+          border-radius: 10px;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center
+        }
+        .labeled-field{
+          width: ${width};
+          margin: 0 10px;
+        }
+*/

@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Link } from 'blitz'
 import { useCurrentUser } from "app/hooks/useCurrentUser"
 import ProfileSection from '../../../components/ProfileSection'
 import CandidateLayout from '../../../../layouts/CandidateLayout'
@@ -12,9 +13,9 @@ const CandidatesProfilePage = () => {
 
   return (
     <>
-      <h2>{`Hi ${currentUser ? currentUser.profile.firstName : ""}, welcome back!`}</h2>
+      <h2>Your Profile</h2>
       <p>Make sure to keep your profile up to date to get more matches!</p>
-      <div className="edit-profile-link">Edit Profile</div>
+      <div className="edit-profile-link"><Link href="/dashboard/candidate/profile/edit"><a style={{ textDecoration: 'none', color: 'white' }}>Edit Profile</a></Link></div>
       <div className="profile-info">
         <div className="profile-left">
           <h3>My Profile</h3>
@@ -90,6 +91,7 @@ const CandidatesProfilePage = () => {
           align-items: center;
           font-weight: bold;
         }
+
         .profile-left {
           padding: 30px;
           margin-right: 10px;
