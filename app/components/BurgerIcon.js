@@ -15,7 +15,7 @@ const Burger = ({ open, setOpen }) => {
       .burger {
         display: none;
         position: absolute;
-        top: 2%;
+        top: 20%;
         right: 2rem;
         flex-direction: column;
         justify-content: space-around;

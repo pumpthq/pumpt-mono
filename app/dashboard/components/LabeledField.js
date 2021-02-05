@@ -2,7 +2,7 @@ export default ({ label, width, innerHeight, children }) => {
   return (
     <>
       <div className="labeled-field">
-        <p>{label}</p>
+        <p><strong>{label}</strong></p>
         <div className="info-field">
           {children}
         </div>
@@ -17,7 +17,7 @@ export default ({ label, width, innerHeight, children }) => {
           justify-content: flex-start;
           align-items: center
         }
-        .labeled-field{
+        .labeled-field {
           width: ${width};
           margin: 0 10px;
         }

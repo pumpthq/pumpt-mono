@@ -1,11 +1,17 @@
 import * as React from 'react'
 import { Link } from 'blitz'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft as Back } from '@fortawesome/free-solid-svg-icons'
+import CandidateDropdown from '../components/candidate/CandidateAccountDropdown'
+import CompanyDropdown from '../components/company/CompanyAccountDropdown'
 import BurgerIcon from '../../components/BurgerIcon'
 import MobileMenu from '../../components/MobileMenu'
+import { useCurrentUser } from "app/hooks/useCurrentUser"
 
 const PrivateNavigation = () => {
+  const user = useCurrentUser()
   const [open, setOpen] = React.useState(false)
-
+  console.log('user: ', user)
   return (
     <>
       <header className="header">
@@ -13,9 +19,17 @@ const PrivateNavigation = () => {
           <img src="/logo.png" />
         </div>
         <div className="login-buttons">
-          <Link href="/signup">
+          {
+            user?.user.role === "CANDIDATE"
+              ? <CandidateDropdown user={user} />
+              : user?.user.role === "RECRUITER"
+                ? <CompanyDropdown user={user} />
+                : <Link href="/">
+                  <a style={{ color: "white", textDecoration: 'none' }}><FontAwesomeIcon style={{ marginRight: '10px' }} icon={Back} />Go Back</a>
+                </Link>}
+          {/* <Link href="/signup">
             <a className="nav-link">Account</a>
-          </Link>
+          </Link> */}
         </div>
         <BurgerIcon open={open} setOpen={setOpen} />
         <MobileMenu open={open} setOpen={setOpen} />

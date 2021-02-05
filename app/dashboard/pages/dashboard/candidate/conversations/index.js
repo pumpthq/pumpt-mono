@@ -6,7 +6,7 @@ const CandidateConversationsPage = () => {
   return (
     <>
 
-      <h2>Recruiter Chat</h2>
+      <h1>Recruiter Chat</h1>
       <p>Here you can chat with recruiters from matched vacancies</p>
       <div className="chat-container">
         <div className="chat-left">

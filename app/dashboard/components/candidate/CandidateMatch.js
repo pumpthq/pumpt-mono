@@ -2,33 +2,30 @@ import * as React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as EmptyStar } from "@fortawesome/free-regular-svg-icons"
 import { faStar as Bookmarked, faMapMarkerAlt as Location, faBuilding as Company } from "@fortawesome/free-solid-svg-icons"
-
-// vacancy.title
-// vacancy.location
-// vacancy.salary
-// company.name
+import { Skeleton } from 'react-loading-skeleton'
+import { Link } from 'blitz'
 
 const CandidateMatch = ({ match }) => {
-  console.log(match)
+  // console.log(match)
 
   return (
     <>
       <div className="match">
         <div className="match-top">
-          <img className="match-img" src={match.company.image.toString()} />
-          <div className="match-bookmark">
-            {match.isBookmarked ? <FontAwesomeIcon icon={Bookmarked} /> : <FontAwesomeIcon icon={EmptyStar} />}
-          </div>
-
+          <img className="match-img" src={match.company.image.toString() || <Skeleton circle width={140} height={140} />} />
         </div>
         <div className="match-heading">
-          <h2 className="match-title">{match.vacancy.title}</h2>
-          <p className="match-company-name"><FontAwesomeIcon style={{ marginRight: '10px' }} icon={Company} />{match.company.name}</p>
-          <p style={{ color: 'gray' }}><FontAwesomeIcon style={{ marginRight: '10px' }} icon={Location} />{match.vacancy.location}</p>
+          <h2 className="match-title">{match.vacancy.title || <Skeleton width={150} />}</h2>
+          <p className="match-company-name"><FontAwesomeIcon style={{ marginRight: '10px' }} icon={Company} />{match.company.name || <Skeleton width={150} />}</p>
+          <p style={{ color: 'gray' }}><FontAwesomeIcon style={{ marginRight: '10px' }} icon={Location} />{match.vacancy.location || <Skeleton width={150} />}</p>
         </div>
         <div className="match-bottom">
           <div className="match-link">
-            See More
+            <Link href={`/dashboard/candidate/matches/${match.id}`}>
+              <a style={{ color: 'white', textDecoration: 'none' }}>
+                See More
+            </a>
+            </Link>
           </div>
           <span style={{ color: 'gray', marginRight: '10px' }}>2 Days Ago</span>
         </div>
