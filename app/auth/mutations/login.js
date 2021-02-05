@@ -1,5 +1,6 @@
 import { authenticateUser } from "app/auth/auth-utils";
 import { LoginInput } from "../validations";
+import { toast } from 'react-toastify'
 export default async function login(input, {
   session
 }) {
@@ -14,5 +15,6 @@ export default async function login(input, {
     userId: user.id,
     roles: [user.role]
   });
+  toast.success("Login Successful")
   return user;
 }

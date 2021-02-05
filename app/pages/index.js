@@ -116,16 +116,55 @@ const Home = () => {
 
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                   </div>
+
                 </div>
               </div>
             </div>
 
           </section>
-          {/* <section className="full-page">
-            <React.Suspense fallback="Loading...">
-              <UserInfo />
-            </React.Suspense>
-          </section> */}
+          <section className="full-page alt-container">
+            <h2 style={{ fontSize: '34px' }}>We Provide Jobs and Talent in the Following Areas</h2>
+            <div style={{ height: "2px", width: '450px', border: '2px solid #8C50FF' }}></div>
+            <p style={{ width: '60%' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+            <p style={{ width: '60%' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <div className="alt-cards">
+              <div className="card">
+                <img className="industry-icon" src="/assets/clipboard_icon_white.png" />
+                <p className="card-heading">Sales & Sales Management</p>
+                <div className="line pink"></div>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              </div>
+              <div className="card">
+                <img className="industry-icon" src="/assets/smartguy_icon_white.png" />
+                <p className="card-heading">Sales Planning & Account Management</p>
+                <div className="line yellow"></div>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              </div>
+              <div className="card">
+                <img className="industry-icon" src="/assets/megaphone_icon_white.png" />
+                <p className="card-heading">Marketing & Creative Services</p>
+                <div className="line green"></div>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              </div>
+              <div className="card">
+                <img className="industry-icon" src="/assets/purse_icon_white.png" />
+                <p className="card-heading">Business Development</p>
+                <div className="line blue"></div>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+              <div className="card">
+                <img className="industry-icon" src="/assets/target_icon_white.png" />
+                <p className="card-heading">Sales & Ad Operations</p>
+                <div className="line purple"></div>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </div>
+          </section>
         </div>
       </main>
       <style jsx global>{`
@@ -170,6 +209,17 @@ const Home = () => {
           margin: 0 10%;
           display: flex;
           flex-direction: column;
+        }
+        .alt-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .alt-cards {
+          display: flex;
+          justify-content: space-around;
+          flex-wrap: wrap;
+          width: 100%;
         }
         .sign-up{
           height: 40px;
@@ -334,7 +384,6 @@ const Home = () => {
         .industry-info {
           position: sticky;
           top: 70px;
-          bottom: 10px;
           padding: 30px;
           border-radius: 15px;
           background-color: #262626;

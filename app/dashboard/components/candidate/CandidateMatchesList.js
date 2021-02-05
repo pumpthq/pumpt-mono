@@ -1,20 +1,42 @@
 import * as React from 'react'
 import Match from './CandidateMatch'
+import CandidateMatchSkeleton from './CandidateMatchSkeleton'
 
 const CandidateMatchesList = ({ matches, selectedTab }) => {
-  const sortedMatches = matches.sort(function (a, b) { return b.isBookmarked - a.isBookmarked })
-  const approvedMatches = matches.filter(match => match.isApproved === true)
-  const bookmarkedMatches = matches.filter(match => match.isBookmarked === true)
-  const rejectedMatches = matches.filter(match => match.isRejected === true)
+  const [matchesState, setMatchesState] = React.useState(null)
+  React.useEffect(() => {
+    setTimeout(setMatchesState(matches), 5000)
+  }, [])
+  const sortedMatches = matchesState && matchesState.sort(function (a, b) { return b.isBookmarked - a.isBookmarked })
+  const approvedMatches = matchesState && matchesState.filter(match => match.isApproved === true)
+
+  const rejectedMatches = matchesState && matchesState.filter(match => match.isRejected === true)
+
+
 
   const metaSelection = {
     'Matches': sortedMatches,
-    'Bookmarked': bookmarkedMatches,
     'Approved': approvedMatches,
     'Rejected': rejectedMatches
   }
 
-  if (matches.length < 1) {
+  if (!matchesState) {
+    return (
+      <>
+        <div className="loading-match-list">
+          Loading
+        </div>
+        <style jsx>{`
+      .loading-match-list {
+      width: 100%;
+      height: 100%;
+    }
+      `}</style>
+      </>
+    )
+  }
+
+  if (matchesState.length < 1) {
     return (
       <>
         <div className="empty-match-list">
@@ -24,7 +46,6 @@ const CandidateMatchesList = ({ matches, selectedTab }) => {
         .empty-match-list {
         width: 100%;
         height: 100%;
-        border: 1px solid blue;
       }
         `}</style>
       </>

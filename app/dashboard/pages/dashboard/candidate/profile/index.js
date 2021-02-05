@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { Link } from 'blitz'
 import { useCurrentUser } from "app/hooks/useCurrentUser"
-import ProfileSection from '../../../components/ProfileSection'
-import CandidateLayout from '../../../../layouts/CandidateLayout'
-import LabeledField from '../../../components/LabeledField'
+import ProfileSection from '../../../../components/ProfileSection'
+import CandidateLayout from 'app/layouts/CandidateLayout'
+import LabeledField from '../../../../components/LabeledField'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle, faSortDown } from "@fortawesome/free-solid-svg-icons"
 import Skeleton from 'react-loading-skeleton'
@@ -13,7 +13,7 @@ const CandidatesProfilePage = () => {
 
   return (
     <>
-      <h2>Your Profile</h2>
+      <h1>Your Profile</h1>
       <p>Make sure to keep your profile up to date to get more matches!</p>
       <div className="edit-profile-link"><Link href="/dashboard/candidate/profile/edit"><a style={{ textDecoration: 'none', color: 'white' }}>Edit Profile</a></Link></div>
       <div className="profile-info">
