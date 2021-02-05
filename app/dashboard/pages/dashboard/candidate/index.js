@@ -1,25 +1,68 @@
+import * as React from 'react'
 import { Link } from 'blitz'
 import CandidateLayout from '../../../../layouts/CandidateLayout'
 import { useCurrentUser } from "app/hooks/useCurrentUser"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartLine as Matches, faCommentAlt as Chats, faTasks as Progress, faExternalLinkSquareAlt as MatchLink, faExternalLinkAlt, faCheckSquare as Approve, faWindowClose as Reject, faBookmark as Bookmark } from "@fortawesome/free-solid-svg-icons"
 import { matchData } from '../../../matchData'
+import Loader from "react-loader-spinner";
 
 
-const EmptyMatchesTable = () => {
+const LoadingMatchesTable = () => {
   return (
     <>
       <div className="empty-table">
-        <p>You have no matches</p>
-        <img src="/assets/resume_cv.png" />
+        <Loader
+          type="Rings"
+          color="#00BFFF"
+          height={400}
+          width={400}
+          timeout={7000}
+        />
       </div>
       <style jsx>{`
         .empty-table {
+          position: relative;
           width: 100%;
           height: 100%;
           display: flex;
           justify-content: center;
           align-items: center
+        }
+        .empty-table h2 {
+          z-index: 10;
+        }
+        .empty-table img {
+          position: absolute;
+        }
+      `}</style>
+    </>
+  )
+}
+
+const EmptyMatchesTable = () => {
+  return (
+    <>
+      <div className="empty-table">
+        <h2>You have no matches</h2>
+
+
+        <img src="/assets/resume_cv.png" />
+      </div>
+      <style jsx>{`
+        .empty-table {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center
+        }
+        .empty-table h2 {
+          z-index: 10;
+        }
+        .empty-table img {
+          position: absolute;
         }
       `}</style>
     </>
@@ -27,6 +70,10 @@ const EmptyMatchesTable = () => {
 }
 
 const CandidatesDashboardPage = () => {
+  const [matchesState, setMatchesState] = React.useState(null)
+  React.useEffect(() => {
+    setTimeout(setMatchesState(matchData), 10000)
+  }, [])
   const handleAction = (event, id) => {
     event.preventDefault()
     console.log(id)
@@ -35,14 +82,14 @@ const CandidatesDashboardPage = () => {
   return (
     <>
 
-      <h2>Dashboard</h2>
+      <h1>Dashboard</h1>
       <div className="welcome-banner">
         <div className="welcome-heading">
           <h3>Welcome back{user ? `, ${user.profile.firstName}!` : "!"}</h3>
           <p>See how your profile matches up with our partners!</p>
         </div>
         <div className="welcome-image">
-          <img src='/assets/engagement.png' style={{ height: '280px', marginBottom: '50px', marginRight: '100px' }} />
+          <img src='/assets/engagement.png' style={{ height: '280px', marginBottom: '60px', marginRight: '100px' }} />
         </div>
       </div>
       <div className="dashboard-container">
@@ -68,17 +115,15 @@ const CandidatesDashboardPage = () => {
               <div className="matches-link"><Link href="/dashboard/candidate/matches"><a><FontAwesomeIcon icon={faExternalLinkAlt} /></a></Link></div>
             </div>
             <div className="match-table-rows">
-              {matchData.length < 1 && (<EmptyMatchesTable />)}
-              {matchData.map(match => {
+              {!matchesState && (<LoadingMatchesTable />)}
+              {matchesState?.length < 1 && (<EmptyMatchesTable />)}
+              {matchesState?.map(match => {
                 return (
                   <div className="match-table-row">
                     <span className="company-name"><strong>{match.company.name}</strong></span>
                     <span className="vacancy-title">{match.vacancy.title}</span>
                     <span className="vacancy-location">{match.vacancy.location}</span>
                     <div className="actions">
-                      <FontAwesomeIcon onClick={(e) => handleAction(e, match.id)} icon={Bookmark} style={{
-                        cursor: 'pointer', fontSize: "20px", margin: '10px', color: "#5A83F5"
-                      }} />
                       <FontAwesomeIcon onClick={(e) => handleAction(e, match.id)} icon={Approve} style={{
                         cursor: 'pointer', fontSize: "20px", margin: '10px', color: "#38c949"
                       }} />
@@ -94,8 +139,14 @@ const CandidatesDashboardPage = () => {
           </div>
           <div className="div5 tasks">
             <h2>Your Tasks</h2>
-
             <hr />
+            <Loader
+              type="Rings"
+              color="#00BFFF"
+              height={400}
+              width={400}
+              timeout={7000}
+            />
           </div>
         </div>
       </div>
@@ -164,20 +215,18 @@ const CandidatesDashboardPage = () => {
           justify-content: center;
           width: 100%;
           height: 70px;
-          background: #121212;
+          background: #141414;
           position: sticky;
           top: 0;
         }
         .match-table-head span{
-          text-align: center;
+          font-size: 22px;
         }
         .match-table-rows{
           width: 100%;
+          height: 80%
+        }
 
-        }
-        .match-table-row span{
-          text-align: center;
-        }
         .match-table-row {
           height: 65px;
           display: flex;

@@ -14,7 +14,7 @@ const CandidateEditProfilePage = () => {
 
   return (
     <>
-      <h2>Edit Your Profile</h2>
+      <h1>Edit Your Profile</h1>
       <p>Make sure to keep your profile up to date to get more matches!</p>
       <div className="back-link" onClick={() => router.back()}><FontAwesomeIcon style={{ marginRight: '10px' }} icon={Back} />{`Go Back`}</div>
       <div className="profile-info">

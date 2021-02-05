@@ -11,7 +11,7 @@ const CandidateMatchesPage = () => {
 
   return (
     <>
-      <h2>Your Matches</h2>
+      <h1>Your Matches</h1>
       <p>You can view all of your matches here</p>
       <div className="match-container">
         <div className="match-tabs">

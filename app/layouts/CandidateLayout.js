@@ -26,11 +26,11 @@ const CandidateLayout = ({ children }) => {
             <a><FontAwesomeIcon style={{ marginRight: '10px' }} icon={faComment}></FontAwesomeIcon>Recruiter Chat</a>
           </SidebarLink>
         </div>
-        <div className="sidenav-link">
+        {/* <div className="sidenav-link">
           <SidebarLink activeClassName="selected" href="/dashboard/candidate/discover">
             <a><FontAwesomeIcon style={{ marginRight: '10px' }} icon={faSearch}></FontAwesomeIcon>Discover</a>
           </SidebarLink>
-        </div>
+        </div> */}
         <div className="sidenav-link">
           <SidebarLink activeClassName="selected" href="/dashboard/candidate/profile">
             <a><FontAwesomeIcon style={{ marginRight: '10px' }} icon={faUser}></FontAwesomeIcon>My Profile</a>

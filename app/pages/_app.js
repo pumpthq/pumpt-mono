@@ -3,9 +3,13 @@ import { ErrorBoundary } from "react-error-boundary";
 import { queryCache } from "react-query";
 import LoginForm from "app/auth/components/LoginForm";
 import { ChakraProvider, theme, CSSReset } from '@chakra-ui/react';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import "@fortawesome/fontawesome-svg-core/styles.css"; // import Font Awesome CSS
+import 'react-toastify/dist/ReactToastify.css';
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { SkeletonTheme } from "react-loading-skeleton";
+import { ToastContainer } from 'react-toastify';
+
 config.autoAddCss = false;
 
 
@@ -22,7 +26,8 @@ export default function App({
     // data any time you reset the error boundary
     queryCache.resetErrorBoundaries();
   }}>
-    <SkeletonTheme color="#2f2f2f" highlightColor="#444">
+    <SkeletonTheme color="#1f1f1f" highlightColor="#444">
+      <ToastContainer />
       {getLayout(<Component {...pageProps} />)}
     </SkeletonTheme>
   </ErrorBoundary>;
