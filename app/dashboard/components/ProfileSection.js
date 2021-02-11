@@ -2,14 +2,13 @@ export default ({ heading, children }) => {
   return (
     <>
       <div style={{ marginTop: '50px' }}>
-        <p>{heading}</p>
-        <hr />
+        <h2>{heading}</h2>
         <div className="profile-row">
           {children}
         </div>
       </div>
       <style jsx>{`
-    .profile-row {
+        .profile-row {
           justify-content: space-between;
           display: flex;
           flex-wrap: wrap;

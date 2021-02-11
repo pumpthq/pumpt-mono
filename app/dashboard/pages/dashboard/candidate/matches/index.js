@@ -7,7 +7,7 @@ import { matchData } from '../../../../matchData'
 
 const CandidateMatchesPage = () => {
   const [tabData, setTabData] = React.useState(tabsData)
-  const [selectedTab, setSelectedTab] = React.useState('Matches')
+  const [selectedTab, setSelectedTab] = React.useState('All Matches')
 
   return (
     <>

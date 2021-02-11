@@ -12,7 +12,7 @@ export default ({ label, width, innerHeight, children }) => {
           height: ${innerHeight};
           padding: 8px;
           background-color: inherit;
-          border-bottom: 2px solid white;
+          border-bottom: 2px solid gray;
           display: flex;
           justify-content: flex-start;
           align-items: center

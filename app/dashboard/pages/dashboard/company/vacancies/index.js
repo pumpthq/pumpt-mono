@@ -1,12 +1,12 @@
-import CompanyLayout from '../../../../../layouts/CompanyLayout'
+import CompanyLayout from 'app/layouts/CompanyLayout'
 
 const CompanyVacanciesPage = () => {
   return (
     <>
-      <h2>Company Vacancies</h2>
+      <h1>Company Vacancies</h1>
     </>
   )
 }
 
-CompanyVacanciesPage.getLayout = (page) => <CompanyLayout title="Pumpt | Home">{page}</CompanyLayout>
+CompanyVacanciesPage.getLayout = (page) => <CompanyLayout title="Pumpt | Vacancies">{page}</CompanyLayout>
 export default CompanyVacanciesPage

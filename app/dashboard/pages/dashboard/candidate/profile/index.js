@@ -5,7 +5,7 @@ import ProfileSection from '../../../../components/ProfileSection'
 import CandidateLayout from 'app/layouts/CandidateLayout'
 import LabeledField from '../../../../components/LabeledField'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimesCircle, faSortDown } from "@fortawesome/free-solid-svg-icons"
+import { faTimesCircle, faSortDown, faCheckCircle } from "@fortawesome/free-solid-svg-icons"
 import Skeleton from 'react-loading-skeleton'
 
 const CandidatesProfilePage = () => {
@@ -18,7 +18,6 @@ const CandidatesProfilePage = () => {
       <div className="edit-profile-link"><Link href="/dashboard/candidate/profile/edit"><a style={{ textDecoration: 'none', color: 'white' }}>Edit Profile</a></Link></div>
       <div className="profile-info">
         <div className="profile-left">
-          <h3>My Profile</h3>
           <ProfileSection heading="Account Information">
             <LabeledField label="First Name" width="45%" innerHeight="50px">
               {currentUser?.profile.firstName}
@@ -40,7 +39,7 @@ const CandidatesProfilePage = () => {
             <p style={{ marginLeft: '10px', marginTop: '40px' }}>
               Willing to relocate?
               {
-                currentUser?.profile.abilityToRelocate ? <FontAwesomeIcon style={{ color: '#04B00F', marginLeft: '10px' }} icon={faTimesCircle} />
+                currentUser?.profile.abilityToRelocate ? <FontAwesomeIcon style={{ color: '#04B00F', marginLeft: '10px' }} icon={faCheckCircle} />
                   : <FontAwesomeIcon style={{ color: '#F52528', marginLeft: '10px' }} icon={faTimesCircle} />
               }
             </p>

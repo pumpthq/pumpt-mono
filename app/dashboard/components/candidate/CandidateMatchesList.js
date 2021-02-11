@@ -15,7 +15,7 @@ const CandidateMatchesList = ({ matches, selectedTab }) => {
 
 
   const metaSelection = {
-    'Matches': sortedMatches,
+    'All Matches': sortedMatches,
     'Approved': approvedMatches,
     'Rejected': rejectedMatches
   }
