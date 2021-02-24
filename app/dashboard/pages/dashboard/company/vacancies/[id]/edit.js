@@ -1,4 +1,4 @@
-import CompanyLayout from '../../../../../../layouts/CompanyLayout'
+import CompanyLayout from 'app/layouts/CompanyLayout'
 import { useRouter } from 'blitz'
 
 const CompanyEditVacancy = () => {
@@ -6,18 +6,18 @@ const CompanyEditVacancy = () => {
   if (!params.id) {
     return (
       <>
-        <h2>Loading...</h2>
+        <h1>Loading...</h1>
       </>
     )
   }
   if (params.id) {
     return (
       <>
-        <h2>{`Edit Vacancy ${params?.id}`}</h2>
+        <h1>{`Edit Vacancy ${params?.id}`}</h1>
       </>
     )
   }
 }
 
-CompanyEditVacancy.getLayout = (page) => <CompanyLayout title="Pumpt | Home">{page}</CompanyLayout>
+CompanyEditVacancy.getLayout = (page) => <CompanyLayout title="Pumpt | Edit Vacancy Details">{page}</CompanyLayout>
 export default CompanyEditVacancy

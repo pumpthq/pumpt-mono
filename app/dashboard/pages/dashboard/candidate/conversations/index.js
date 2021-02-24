@@ -199,5 +199,5 @@ const CandidateConversationsPage = () => {
   )
 }
 
-CandidateConversationsPage.getLayout = (page) => <CandidateLayout title="Pumpt | Home">{page}</CandidateLayout>
+CandidateConversationsPage.getLayout = (page) => <CandidateLayout title="Pumpt | Recruiter Chat">{page}</CandidateLayout>
 export default CandidateConversationsPage

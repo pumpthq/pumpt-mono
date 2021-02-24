@@ -53,11 +53,11 @@ const CandidateLayout = ({ children }) => {
             <a><FontAwesomeIcon icon={faComment}></FontAwesomeIcon></a>
           </SidebarLink>
         </div>
-        <div className="sidenav-link">
+        {/* <div className="sidenav-link">
           <SidebarLink activeClassName="selected" href="/dashboard/candidate/discover">
             <a><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></a>
           </SidebarLink>
-        </div>
+        </div> */}
         <div className="sidenav-link">
           <SidebarLink activeClassName="selected" href="/dashboard/candidate/profile">
             <a><FontAwesomeIcon icon={faUser}></FontAwesomeIcon></a>

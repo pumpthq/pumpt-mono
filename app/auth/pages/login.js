@@ -10,7 +10,13 @@ const LoginPage = () => {
   const session = useSession()
   const handleLoginRedirect = (role) => {
     if (!session.isLoading) {
-      router.push(role == "RECRUITER" ? '/dashboard/company' : '/dashboard/candidate')
+      switch (role) {
+        case "RECRUITER":
+          return router.push('/dashboard/company')
+        case "CANDIDATE":
+          return router.push('/dashboard/candidate')
+
+      }
     }
   }
 
