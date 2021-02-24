@@ -4,12 +4,12 @@ import { queryCache } from "react-query";
 import LoginForm from "app/auth/components/LoginForm";
 import { ChakraProvider, theme, CSSReset } from '@chakra-ui/react';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import "@fortawesome/fontawesome-svg-core/styles.css"; // import Font Awesome CSS
 import 'react-toastify/dist/ReactToastify.css';
-import { config } from "@fortawesome/fontawesome-svg-core";
 import { SkeletonTheme } from "react-loading-skeleton";
 import { ToastContainer } from 'react-toastify';
 
+import "@fortawesome/fontawesome-svg-core/styles.css"; // import Font Awesome CSS
+import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
 
 

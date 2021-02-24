@@ -27,9 +27,6 @@ const PrivateNavigation = () => {
                 : <Link href="/">
                   <a style={{ color: "white", textDecoration: 'none' }}><FontAwesomeIcon style={{ marginRight: '10px' }} icon={Back} />Go Back</a>
                 </Link>}
-          {/* <Link href="/signup">
-            <a className="nav-link">Account</a>
-          </Link> */}
         </div>
         <BurgerIcon open={open} setOpen={setOpen} />
         <MobileMenu open={open} setOpen={setOpen} />

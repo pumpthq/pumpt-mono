@@ -3,10 +3,10 @@ import CompanyLayout from '../../../../../layouts/CompanyLayout'
 const CompanyEditProfilePage = () => {
   return (
     <>
-      <h2>Edit Profile</h2>
+      <h1>Edit Profile</h1>
     </>
   )
 }
 
-CompanyEditProfilePage.getLayout = (page) => <CompanyLayout title="Pumpt | Home">{page}</CompanyLayout>
+CompanyEditProfilePage.getLayout = (page) => <CompanyLayout title="Pumpt | Edit Profile">{page}</CompanyLayout>
 export default CompanyEditProfilePage
