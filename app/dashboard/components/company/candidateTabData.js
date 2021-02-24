@@ -1,0 +1,1 @@
+export const tabsData = ['All Matches', 'Approved', 'Rejected']

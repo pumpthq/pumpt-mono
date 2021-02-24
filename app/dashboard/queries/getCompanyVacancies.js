@@ -1,5 +1,6 @@
 import db from 'db'
 
 export default async function getCompanyVacancies({ where }, ctx) {
-  return
+  const vacancies = await db.vacancy.findMany({ where }, { include: { recruiter: true, company: true } })
+  return vacancies
 }
