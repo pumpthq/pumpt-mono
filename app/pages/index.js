@@ -51,8 +51,11 @@ const Home = () => {
         <div className="container">
           <section className="hero">
             <div className="hero-left">
-              <h1>Job Matching Done Smarter.</h1>
-              <p>Pumpt uses proprietary AI to match Candidates & Employers. There’s no longer any need to search for jobs or candidates…we do it for you.</p>
+              <h1>We provide a faster and more efficient way to fill jobs and find jobs.</h1>
+              <p>Pumpt is a technology-driven job platform serving professionals and companies
+              in the digital media, ad tech, and SaaS/Enterprise industries throughout the U.S.
+              With a focus on sales and sales support functions, Pumpt uses proprietary AI to
+match Candidates &amp; Employers.</p>
               <div className="hero-buttons">
                 <Link href="/candidates">
                   <a className="hero-button">I am a Candidate</a>
@@ -275,6 +278,7 @@ const Home = () => {
           justify-content: center;
         }
         .hero-left h1 {
+          line-height: 1.1;
           font-size: 65px;
           margin-bottom: 10px;
         }
@@ -312,8 +316,8 @@ const Home = () => {
           align-items: center;
         }
         .hero-image {
-          width: 100%;
-          max-width: 950px;
+          width: 90%;
+          max-width: 850px;
           min-width: 400px;
         }
 
